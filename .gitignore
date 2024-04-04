@@ -1,0 +1,63 @@
+
+# IntelliJ project files
+.idea/
+*.iml
+*.iws
+out/
+*.ipr
+
+# Java / Gradle
+build/
+.gradle/
+!gradle/wrapper/gradle-wrapper.jar
+
+# Package Files
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# Virtual Machine Crash Logs
+hs_err_pid*
+
+# Node (for JavaScript/HTML/CSS and React modules)
+node_modules/
+npm-debug.log
+yarn-error.log
+yarn-debug.log
+package-lock.json
+yarn.lock
+
+# Environment files
+.env
+.env.local
+
+# Distribution / build
+dist/
+public/build/
+
+# IDEs and editors
+.vscode/
+*.swp
+*~
+.DS_Store
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+
+# OS generated files
+.DS_Store*
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Temporary files
+tmp/
+temp/

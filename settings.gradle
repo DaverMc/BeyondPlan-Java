@@ -1,0 +1,5 @@
+rootProject.name = 'BeyondPlan'
+include 'BeyondPlan-Client'
+include 'BeyondPlan-Core'
+include 'BeyondPlan-Utils'
+
