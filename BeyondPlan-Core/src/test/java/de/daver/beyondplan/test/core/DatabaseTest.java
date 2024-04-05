@@ -8,15 +8,41 @@ import de.daver.beyondplan.util.sql.Statement;
 import de.daver.beyondplan.util.sql.driver.SQLiteDriver;
 
 import java.io.File;
-import java.io.IOException;
-import java.sql.SQLException;
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
 
-public class DatabaseTest {
+public interface DatabaseTest {
 
-    public static void main(String[] args) throws IOException, SQLException, ExecutionException, InterruptedException, ClassNotFoundException, TimeoutException {
+    Statement CREATE_TABLE = new Statement("CREATE TABLE IF NOT EXISTS mitarbeiter (\n" +
+            "    id INT PRIMARY KEY,\n" +
+            "    name VARCHAR(100),\n" +
+            "    abteilung VARCHAR(50),\n" +
+            "    eintrittsdatum DATE\n" +
+            ");");
+    Statement INSERT_INTO = new Statement("INSERT INTO mitarbeiter (id, name, abteilung, eintrittsdatum) VALUES\n" +
+            "(1, 'Max Mustermann', 'IT', '2021-01-10'),\n" +
+            "(2, 'Erika Mustermann', 'HR', '2021-02-15'),\n" +
+            "(3, 'John Doe', 'Marketing', '2021-03-01');");
+
+    Statement UPDATE = new Statement("UPDATE mitarbeiter\n" +
+            "SET abteilung = 'Finanzen'\n" +
+            "WHERE id = 2;");
+
+    Statement DELETE_FROM =  new Statement("DELETE FROM mitarbeiter\n" +
+            "WHERE id = 3;");
+
+    Statement SELECT_ALL = new Statement("SELECT * FROM mitarbeiter;\n");
+
+    Statement SELECT_COUNT = new Statement("SELECT COUNT(*) AS AnzahlMitarbeiter FROM mitarbeiter;");
+
+    Statement SELECT_MAX = new Statement("SELECT MAX(eintrittsdatum) AS LetzterEintritt FROM mitarbeiter;");
+
+    Statement ALTER_TABLE = new Statement("ALTER TABLE mitarbeiter ADD gehalt DECIMAL(10,2);");
+
+    Statement CREATE_INDEX =  new Statement("CREATE INDEX idx_abteilung ON mitarbeiter(abteilung);");
+
+    Statement DROP_TABLE = new Statement("DROP TABLE mitarbeiter;");
+
+    static void main(String[] args) throws Exception {
         var config = DatabaseConfig.builder()
                 .url("localhost")
                 .username("admin")
@@ -29,48 +55,21 @@ public class DatabaseTest {
         var dbFile = new File("test.db");
         db.connect(new SQLiteDriver(dbFile));
 
-        var s1 = new Statement("CREATE TABLE IF NOT EXISTS mitarbeiter (\n" +
-                "    id INT PRIMARY KEY,\n" +
-                "    name VARCHAR(100),\n" +
-                "    abteilung VARCHAR(50),\n" +
-                "    eintrittsdatum DATE\n" +
-                ");");
+        db.post(CREATE_INDEX);
+        db.post(INSERT_INTO);
+        db.post(UPDATE);
+        db.post(DELETE_FROM);
 
-        var s2 = new Statement("INSERT INTO mitarbeiter (id, name, abteilung, eintrittsdatum) VALUES\n" +
-                "(1, 'Max Mustermann', 'IT', '2021-01-10'),\n" +
-                "(2, 'Erika Mustermann', 'HR', '2021-02-15'),\n" +
-                "(3, 'John Doe', 'Marketing', '2021-03-01');");
-
-        var s3 = new Statement("UPDATE mitarbeiter\n" +
-                "SET abteilung = 'Finanzen'\n" +
-                "WHERE id = 2;");
-
-        var s4 = new Statement("DELETE FROM mitarbeiter\n" +
-                "WHERE id = 3;");
-
-        var s5 = new Statement("SELECT * FROM mitarbeiter;\n");
-        var s6 = new Statement("SELECT COUNT(*) AS AnzahlMitarbeiter FROM mitarbeiter;");
-        var s7 = new Statement("SELECT MAX(eintrittsdatum) AS LetzterEintritt FROM mitarbeiter;");
-
-        var s8 = new Statement("ALTER TABLE mitarbeiter ADD gehalt DECIMAL(10,2);");
-        var s9 = new Statement("CREATE INDEX idx_abteilung ON mitarbeiter(abteilung);");
-        var s10 = new Statement("DROP TABLE mitarbeiter;");
-
-        db.post(s1);
-        db.post(s2);
-        db.post(s3);
-        db.post(s4);
-
-        Result res1 = db.request(s5);
+        Result res1 = db.request(SELECT_ALL);
         System.out.println(res1);
-        Result res2 = db.request(s6);
+        Result res2 = db.request(SELECT_COUNT);
         System.out.println(res2.get("AnzahlMitarbeiter", ObjectTransformer.INT));
-        Result res3 = db.request(s7);
+        Result res3 = db.request(SELECT_MAX);
         System.out.println(res3.get("LetzterEintritt", ObjectTransformer.STRING));
 
-        db.post(s8);
-        db.post(s9);
-        db.post(s10);
+        db.post(ALTER_TABLE);
+        db.post(CREATE_INDEX);
+        db.post(DROP_TABLE);
     }
 
 }

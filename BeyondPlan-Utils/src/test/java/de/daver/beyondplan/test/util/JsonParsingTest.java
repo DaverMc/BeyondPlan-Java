@@ -3,8 +3,9 @@ package de.daver.beyondplan.test.util;
 import de.daver.beyondplan.util.json.JsonObject;
 import de.daver.beyondplan.util.json.JsonParser;
 
-public class JsonParsingTest {
+public interface JsonParsingTest {
 
+    //region JsonTestStrings
     public static final String TEST1 = """
                 {
                   "name": "Max Mustermann",
@@ -141,7 +142,9 @@ public class JsonParsingTest {
             }
             """;
 
-    public static void main(String[] args) {
+    //endregion
+
+    static void main(String[] args) {
         System.out.println("____TEST 1____");
         JsonObject json1 = JsonParser.ofString(TEST1);
         System.out.println(json1);
