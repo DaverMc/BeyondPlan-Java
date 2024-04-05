@@ -25,9 +25,8 @@ public class JsonObject {
         for(int i = 0; i < parts.length; i++) {
             String part = parts[i];
             //System.out.println(part);
-            String key = part.split(":")[0];
+            String key = part.split(":")[0].replaceAll("\"", "");
             if(part.contains("{")) {
-                System.out.println("DOWN");
                 String[] newParts = new String[parts.length - i];
 
                 System.arraycopy(parts, i, newParts, 0, newParts.length);
@@ -37,15 +36,13 @@ public class JsonObject {
                 root.values.put(key, value);
             }
             else if(part.contains("}")) {
-                System.out.println("UP");
                 int first = part.indexOf('}');
                 parts[i] = part.substring(0, first) + part.substring(first + 1);
                 return root;
             }
             else {
-                String val = part.replace(key, part.replace(key, ""));
-                System.out.println("K:" + key + " | V:" + val);
-                root.values.put(key, val);
+                String val = part.replace(key +"\":", "");
+                root.values.put(key, val.replaceAll("\"", ""));
             }
         }
         return root;
