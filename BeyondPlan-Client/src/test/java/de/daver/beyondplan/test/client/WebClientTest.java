@@ -1,9 +1,9 @@
-package de.daver.beyondplan.client;
+package de.daver.beyondplan.test.client;
 
 import de.daver.beyondplan.client.web.WebClient;
 import de.daver.beyondplan.client.web.WebClientSocket;
 
-public class TestClient {
+public class WebClientTest {
 
     public static void main(String[] args) throws Exception {
         testSocket();
@@ -22,5 +22,4 @@ public class TestClient {
         socket.start();
         socket.handShake();
     }
-
 }

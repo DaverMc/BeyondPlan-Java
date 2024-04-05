@@ -1,10 +1,15 @@
-package de.daver.beyondplan.core.json;
+package de.daver.beyondplan.util.json;
 
 import de.daver.beyondplan.util.StringUtils;
 
+import java.net.http.HttpResponse;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public interface JsonParser {
+
+    static JsonObject ofHttpResponse(HttpResponse<String> response) {
+        return ofString(response.body());
+    }
 
     static JsonObject ofString(String jsonString) {
         String[] parts = jsonString.split(",");

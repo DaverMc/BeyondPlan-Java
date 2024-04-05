@@ -1,6 +1,7 @@
 package de.daver.beyondplan.client.web;
 
 import de.daver.beyondplan.util.json.JsonObject;
+import de.daver.beyondplan.util.json.JsonParser;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -25,6 +26,6 @@ public class WebClient {
                 .GET()
                 .build();
         CompletableFuture<HttpResponse<String>> response = this.client.sendAsync(request, HttpResponse.BodyHandlers.ofString());
-        return JsonObject.ofHttpResponse(response.get()); //TODO Timeout einbauen in WebConfig festlegen
+        return JsonParser.ofHttpResponse(response.get()); //TODO Timeout einbauen in WebConfig festlegen
     }
 }

@@ -1,114 +1,68 @@
 package de.daver.beyondplan.util.json;
 
-import java.net.http.HttpResponse;
-import java.util.HashMap;
+
+import de.daver.beyondplan.util.StringTransformer;
+
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class JsonObject {
 
-    private final Map<String, Object> values;
+    private final Map<String, Object> map;
 
-    public JsonObject() {
-        this.values = new HashMap<>();
+    protected JsonObject() {
+        map = new LinkedHashMap<>();
     }
 
-
-    public static JsonObject parseJson(String json) {
-        JsonObject root = new JsonObject();
-        String[] parts = json.split(",");
-        for(int i = 0; i < parts.length; i++) parts[i] = parts[i].trim();
-        return (JsonObject) root.parseValue(parts);
+    protected void add(String key, Object value) {
+        map.put(key, value);
     }
 
-    private Object parseValue(String[] parts) {
-        JsonObject root = new JsonObject();
-        for(int i = 0; i < parts.length; i++) {
-            String part = parts[i];
-            //System.out.println(part);
-            String key = part.split(":")[0].replaceAll("\"", "");
-            if(part.contains("{")) {
-                String[] newParts = new String[parts.length - i];
+    public String getString(String key) {
+        return (String) map.get("\"" + key + "\"");
+    }
 
-                System.arraycopy(parts, i, newParts, 0, newParts.length);
-                int first = part.indexOf('{');
-                newParts[0] = part.substring(0, first) + part.substring(first + 1);
-                var value = parseValue(newParts);
-                root.values.put(key, value);
+    public JsonObject getJsonObject(String key) {
+        return (JsonObject) map.get("\"" + key + "\"");
+    }
+
+    public JsonArray getJsonArray(String key) {
+        return (JsonArray) map.get("\"" + key + "\"");
+    }
+
+    public <T> T get(String key, StringTransformer<T> transformer) {
+        return transformer.transform(getString(key));
+    }
+
+    @Override
+    public String toString() {
+        return toStringImpl(0);
+    }
+
+    protected String toStringImpl(int indent) {
+        StringBuilder jsonBuilder = new StringBuilder();
+        jsonBuilder.append("{\n");
+        boolean first = true; // Flag, um das erste Element ohne führendes Komma zu behandeln
+        String indentString = " ".repeat(indent); // Erzeugt die Einrückung
+
+        for (Map.Entry<String, Object> entry : map.entrySet()) {
+            if (!first) {
+                jsonBuilder.append(",\n");
             }
-            else if(part.contains("}")) {
-                int first = part.indexOf('}');
-                parts[i] = part.substring(0, first) + part.substring(first + 1);
-                return root;
+            jsonBuilder.append(indentString).append("  \"").append(entry.getKey()).append("\": ");
+            Object value = entry.getValue();
+            if (value instanceof JsonObject) {
+                jsonBuilder.append(((JsonObject) value).toStringImpl(indent + 2));
+            } else if (value instanceof JsonArray) {
+                jsonBuilder.append(((JsonArray) value).toStringImpl(indent + 2));
+            } else if (value instanceof String) {
+                jsonBuilder.append("\"").append(value).append("\"");
+            } else {
+                jsonBuilder.append(value);
             }
-            else {
-                String val = part.replace(key +"\":", "");
-                root.values.put(key, val.replaceAll("\"", ""));
-            }
+            first = false;
         }
-        return root;
+        jsonBuilder.append("\n").append(indentString).append("}");
+        return jsonBuilder.toString();
     }
-
-    public void print(boolean deep) {
-        for(String key : values.keySet()) {
-            var value = values.get(key);
-            if(value instanceof JsonObject json) {
-                if(deep) json.print(true);
-            }else System.out.println(key + " | " + values.get(key));
-        }
-    }
-
-
-    private String removeUnnecessarySpace(String s){
-        return s.replaceAll(" ", ""); //TODO Nur zwishcne werten
-    }
-
-    private Map<String, JsonValue<?>> r(JsonObject root, String[] leftParts) {
-        for(int i = 0; i < leftParts.length; i++) {
-            String part = removeUnnecessarySpace(leftParts[i]);
-
-            if(part.contains("{")) {
-                int count = countChars(part, '{');
-                for(int j = 0; j < count; j++) System.out.println("Open");
-                part = part.replace("{" , "");
-                String[] newLeftOvers = new String[leftParts.length - i];
-                System.arraycopy(leftParts, i, newLeftOvers, 0, newLeftOvers.length);
-            }
-            if(part.contains("}")) {
-                int count = countChars(part, '}');
-                for(int j = 0; j < count; j++) System.out.println("Close");
-                part = part.replace("}" , "");
-            }
-
-            if(part.contains("[")) {
-                int count = countChars(part, '[');
-                for(int j = 0; j < count; j++) System.out.println("Array Open");
-                part = part.replace("]" , "");
-            }
-
-            if(part.contains("]")) {
-                int count = countChars(part, ']');
-                for(int j = 0; j < count; j++) System.out.println("Array Close");
-                part = part.replace("]" , "");
-            }
-            System.out.println(part);
-        }
-        return null;
-    }
-
-    private int countChars(String s, char c) {
-        int count = 0;
-        for(int i = 0; i < s.length(); i++) if(s.charAt(i) == c) count++;
-        return count;
-    }
-/*
-    public <T> T get(String key) {
-        return (T) values.get(key).value();
-    }
- */
-
-    public static JsonObject ofHttpResponse(HttpResponse<String> response) {
-        String jsonString = response.body();
-        return JsonObject.parseJson(jsonString);
-    }
-
 }

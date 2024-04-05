@@ -1,9 +1,9 @@
-package de.daver.beyondplan.core;
+package de.daver.beyondplan.test.util;
 
-import de.daver.beyondplan.core.json.JsonObject;
-import de.daver.beyondplan.core.json.JsonParser;
+import de.daver.beyondplan.util.json.JsonObject;
+import de.daver.beyondplan.util.json.JsonParser;
 
-public class TestJsonParsing {
+public class JsonParsingTest {
 
     public static final String TEST1 = """
                 {
@@ -142,38 +142,50 @@ public class TestJsonParsing {
             """;
 
     public static void main(String[] args) {
+        System.out.println("____TEST 1____");
         JsonObject json1 = JsonParser.ofString(TEST1);
-        json1.print();
+        System.out.println(json1);
 
+        System.out.println("____SIMPLE____");
         var jsonSimple = JsonParser.ofString(SIMPLE);
-        jsonSimple.print();
+        System.out.println(jsonSimple);
 
+        System.out.println("____BOXED____");
         var jsonBoxed = JsonParser.ofString(BOXED);
-        jsonBoxed.print();
+        System.out.println(jsonBoxed);
 
+        System.out.println("____ARRAY OF OBJECTS____");
         var jsonArrayOfObjects = JsonParser.ofString(ARRAY_OF_OBJECTS);
-        jsonArrayOfObjects.print();
+        System.out.println(jsonArrayOfObjects);
 
+        System.out.println("____COMPLEX____");
         var jsonComplex = JsonParser.ofString(COMPLEX);
-        jsonComplex.print();
+        System.out.println(jsonComplex);
 
+        System.out.println("____EMPTY ARRAY____");
         var jsonEmptyArray = JsonParser.ofString(EMPTY_OBJ_ARRAY);
-        jsonEmptyArray.print();
+        System.out.println(jsonEmptyArray);
 
+        System.out.println("____COMMA____");
         var jsonComma = JsonParser.ofString(COMMA_IN_VALUE);
-        jsonComma.print();
+        System.out.println(jsonComma);
 
+        System.out.println("____PARENTHESES____");
         var jsonParentheses = JsonParser.ofString(PARENTHESES_IN_VALUE);
-        jsonParentheses.print();
+        System.out.println(jsonParentheses);
 
+        System.out.println("____ESCAPE____");
         var jsonEscape = JsonParser.ofString(ESCAPE_IN_VALUE);
-        jsonEscape.print();
+        System.out.println(jsonEscape);
 
+        System.out.println("____MIXED SYMBOLS____");
         var jsonMixedSymbols = JsonParser.ofString(MIXED_SYMBOLS);
-        jsonMixedSymbols.print();
+        System.out.println(jsonMixedSymbols);
 
+        System.out.println("____BOXED WITH SYMBOLS____");
         var jsonBoxedWithSymbols = JsonParser.ofString(BOXED_WITH_SYMBOLS);
-        jsonBoxedWithSymbols.print();
+        System.out.println(jsonBoxedWithSymbols);
 
+        System.out.println("____FINISHED ALL TESTS____");
     }
 }
