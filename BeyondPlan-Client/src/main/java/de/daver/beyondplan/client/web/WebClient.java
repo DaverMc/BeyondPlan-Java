@@ -13,6 +13,7 @@ import java.util.concurrent.ExecutionException;
 
 public class WebClient {
 
+    //TODO Client Config machen
     private final HttpClient client;
 
     public WebClient() {
@@ -26,6 +27,6 @@ public class WebClient {
                 .GET()
                 .build();
         CompletableFuture<HttpResponse<String>> response = this.client.sendAsync(request, HttpResponse.BodyHandlers.ofString());
-        return JsonParser.ofHttpResponse(response.get()); //TODO Timeout einbauen in WebConfig festlegen
+        return JsonParser.ofHttpResponse(response.get());
     }
 }

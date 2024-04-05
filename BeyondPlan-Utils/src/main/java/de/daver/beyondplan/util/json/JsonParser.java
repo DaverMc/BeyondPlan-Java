@@ -35,7 +35,7 @@ public interface JsonParser {
                 entry = StringUtils.removeFirst('}', entry);
                 String[] parts = entry.split("\"");
                 String key = entry.split(":")[0].trim();
-                String value = parts[3]; //FIXME Hier crasht empty array überprüfen wie viele teile es gibt
+                String value = parts[3];
                 jsonObject.add(key, value);
                 entries[i] = parts[4];
                 startIndex.set(i);

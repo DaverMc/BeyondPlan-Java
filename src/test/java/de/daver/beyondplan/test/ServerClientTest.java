@@ -6,6 +6,7 @@ import de.daver.beyondplan.client.web.WebClientSocket;
 import de.daver.beyondplan.core.web.AsyncHttpHandler;
 import de.daver.beyondplan.core.web.WebServer;
 import de.daver.beyondplan.core.web.WebServerSocket;
+import de.daver.beyondplan.util.json.JsonObject;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -21,8 +22,11 @@ public class ServerClientTest {
         server.createContext("/test", new AsyncHttpHandler() {
             @Override
             public void handleAsync(HttpExchange httpExchange) throws IOException {
-                System.out.println("Request");
-                String response = "This is the response";
+                String response = """
+                {
+                    "text": "This is the response"
+                }
+                """;
                 httpExchange.sendResponseHeaders(200, response.length());
                 OutputStream os = httpExchange.getResponseBody();
                 os.write(response.getBytes());
@@ -32,7 +36,9 @@ public class ServerClientTest {
         server.start();
 
         WebClient webClient = new WebClient();
-        assertDoesNotThrow(webClient::request);
+
+        JsonObject result = assertDoesNotThrow(webClient::request);
+        assertEquals("This is the response", result.getString("text"));
 
         server.stop();
     }

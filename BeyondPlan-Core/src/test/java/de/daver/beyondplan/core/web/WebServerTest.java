@@ -17,7 +17,11 @@ class WebServerTest {
             @Override
             public void handleAsync(HttpExchange httpExchange) throws IOException {
                 System.out.println("Request");
-                String response = "This is the response";
+                String response = """
+                {
+                    "text": "This is the response"
+                }
+                """;
                 httpExchange.sendResponseHeaders(200, response.length());
                 OutputStream os = httpExchange.getResponseBody();
                 os.write(response.getBytes());

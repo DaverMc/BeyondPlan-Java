@@ -4,25 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8c90a7ab-3649-459d-9c87-5f346bf4dd79" name="Changes" comment="Organized Testing">
-      <change afterPath="$PROJECT_DIR$/BeyondPlan-Client/src/test/java/de/daver/beyondplan/client/web/WebClientTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BeyondPlan-Core/src/test/java/de/daver/beyondplan/core/web/WebServerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/test/java/de/daver/beyondplan/util/StringUtilsTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/test/java/de/daver/beyondplan/util/json/JsonParserTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/test/java/de/daver/beyondplan/util/sql/DatabaseTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/de/daver/beyondplan/test/ServerClientTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BeyondPlan-Client/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/BeyondPlan-Client/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BeyondPlan-Core/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/BeyondPlan-Core/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BeyondPlan-Core/src/test/java/de/daver/beyondplan/test/core/DatabaseTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/BeyondPlan-Core/src/test/java/de/daver/beyondplan/test/core/WebServerTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/BeyondPlan-Utils/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/BeyondPlan-Utils/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/StringTransformer.java" beforeDir="false" afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/StringTransformer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/json/JsonArray.java" beforeDir="false" afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/json/JsonArray.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/json/JsonObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/json/JsonObject.java" afterDir="false" />
+    <list default="true" id="8c90a7ab-3649-459d-9c87-5f346bf4dd79" name="Changes" comment="Implemented JUnit Testing fully">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BeyondPlan-Client/src/main/java/de/daver/beyondplan/client/web/WebClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/BeyondPlan-Client/src/main/java/de/daver/beyondplan/client/web/WebClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BeyondPlan-Core/src/test/java/de/daver/beyondplan/core/web/WebServerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/BeyondPlan-Core/src/test/java/de/daver/beyondplan/core/web/WebServerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/json/JsonParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/json/JsonParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BeyondPlan-Utils/src/test/java/de/daver/beyondplan/test/util/JsonParsingTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/de/daver/beyondplan/test/ServerClientTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/de/daver/beyondplan/test/ServerClientTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,39 +77,42 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.TestJsonParsing.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.BeyondPlan-Java (Tests).executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.BeyondPlan-Java [BeyondPlan-Client:test].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.BeyondPlan-Java:BeyondPlan-Core [:BeyondPlan-Core:TestJsonParsing.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.BeyondPlan-Java:BeyondPlan-Utils [:BeyondPlan-Utils:JsonParsingTest.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Build BeyondPlan-Java.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.DatabaseTest (1).executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.DatabaseTest.createTable.executor&quot;: &quot;Debug&quot;,
-    &quot;Gradle.DatabaseTest.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.StringUtilsTest.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Utils-Module-Tests.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_directory_selection&quot;: &quot;D:/BeyondPlan-Projekt/BeyondPlan-Java/BeyondPlan-Core/src/main/java/de/daver/beyondplan/core/json&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.TestJsonParsing.executor": "Run",
+    "Gradle.BeyondPlan-Java (Tests).executor": "Run",
+    "Gradle.BeyondPlan-Java [BeyondPlan-Client:test].executor": "Run",
+    "Gradle.BeyondPlan-Java:BeyondPlan-Core [:BeyondPlan-Core:TestJsonParsing.main()].executor": "Run",
+    "Gradle.BeyondPlan-Java:BeyondPlan-Utils [:BeyondPlan-Utils:JsonParsingTest.main()].executor": "Run",
+    "Gradle.Build BeyondPlan-Java.executor": "Run",
+    "Gradle.Client-Module-Tests.executor": "Run",
+    "Gradle.Core-Module-Tests.executor": "Run",
+    "Gradle.DatabaseTest (1).executor": "Run",
+    "Gradle.DatabaseTest.createTable.executor": "Debug",
+    "Gradle.DatabaseTest.executor": "Run",
+    "Gradle.ServerClientTest.oneServerOneClientHttpRequest.executor": "Run",
+    "Gradle.StringUtilsTest.executor": "Run",
+    "Gradle.Utils-Module-Tests.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_directory_selection": "D:/BeyondPlan-Projekt/BeyondPlan-Java/BeyondPlan-Core/src/main/java/de/daver/beyondplan/core/json",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;sqlite&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "sqlite"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -259,7 +249,7 @@
       <option name="presentableId" value="Default" />
       <updated>1712305594653</updated>
       <workItem from="1712305595934" duration="11549000" />
-      <workItem from="1712323382748" duration="6755000" />
+      <workItem from="1712323382748" duration="7843000" />
     </task>
     <task id="LOCAL-00001" summary="Working Simple first version of JsonParser">
       <option name="closed" value="true" />
@@ -309,7 +299,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712317495863</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Implemented JUnit Testing fully">
+      <option name="closed" value="true" />
+      <created>1712330356331</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1712330356331</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -322,6 +320,7 @@
     <MESSAGE value="Excluded Parsing to seperate interface" />
     <MESSAGE value="toString function added and project new organized, Test that is failing Empty Array" />
     <MESSAGE value="Organized Testing" />
-    <option name="LAST_COMMIT_MESSAGE" value="Organized Testing" />
+    <MESSAGE value="Implemented JUnit Testing fully" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented JUnit Testing fully" />
   </component>
 </project>
