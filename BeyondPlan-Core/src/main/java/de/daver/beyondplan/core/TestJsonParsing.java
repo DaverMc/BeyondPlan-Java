@@ -1,7 +1,7 @@
 package de.daver.beyondplan.core;
 
-import java.util.*;
-import java.util.concurrent.atomic.AtomicInteger;
+import de.daver.beyondplan.core.json.JsonArray;
+import de.daver.beyondplan.core.json.JsonObject;
 
 public class TestJsonParsing {
 
@@ -38,131 +38,24 @@ public class TestJsonParsing {
                 """;
         JsonObject jsonObject =JsonObject.parse(s);
         jsonObject.print();
-        System.out.println(jsonObject.getString("name"));
-    }
+        jsonObject.getString("name");
+        jsonObject.getString("alter");
+        jsonObject.getString("verheiratet");
 
-    static class JsonObject {
+        JsonArray array = jsonObject.getJsonArray("adressen");
 
-        public static JsonObject parse(String jsonString) {
-            JsonObject jsonObject = new JsonObject();
-            String[] parts = jsonString.replace("\"", "").split(",");
-            AtomicInteger startIndex = new AtomicInteger(0);
-            return parseObject(startIndex, parts);
-        }
+        var v1 = array.getJsonObject(0);
+        v1.getString("strasse");
+        v1.getString("stadt");
+        v1.getString("plz");
 
-        private static JsonObject parseObject(AtomicInteger startIndex, String[] entries) {
-            JsonObject jsonObject = new JsonObject();
-            for(int i = startIndex.get(); i < entries.length; i++) {
-                String entry = entries[i];
-                String key = entry.split(":")[0].trim();
-                if(entry.contains("{")) {
-                    startIndex.set(i);
-                    entries[i] = removeFirst('{', entries[i]);
-                    jsonObject.add(key, parseObject(startIndex, entries));
-                    i = startIndex.get();
-                } else if(entry.contains("}")) {
-                    entries[i] = removeFirst('}', entries[i]);
-                    return jsonObject;
-                } else if(entry.contains("[")) {
-                    startIndex.set(i);
-                    entries[i] = removeFirst('[', entries[i]);
-                    jsonObject.add(key, parseArray(startIndex, entries));
-                    i = startIndex.get();
-                } else {
-                    String value = entry.replace(key + ":", "").trim();
-                    jsonObject.add(key, value);
-                }
-            }
-            return jsonObject;
-        }
+        var v2 = array.getJsonObject(1);
+        v2.getString("strasse");
+        v2.getString("stadt");
+        v2.getString("plz");
 
-        private static String removeFirst(char c, String s) {
-            int i = s.indexOf(c);
-            return s.substring(0, i) + s.substring(i + 1);
-        }
-
-        private static JsonArray parseArray(AtomicInteger startIndex, String[] entries) {
-            JsonArray array = new JsonArray();
-            for(int i = startIndex.get(); i < entries.length; i++) {
-                String entry = entries[i];
-                if(entry.contains("]")) {
-                    entries[i] = removeFirst(']', entry);
-                    startIndex.set(i);
-                    return array;
-                } else if(entry.contains("{")) {
-                    startIndex.set(i);
-                    entries[i] = removeFirst('{', entries[i]);
-                    array.add(parseObject(startIndex, entries));
-                    i = startIndex.get();
-                } else if(entry.contains("[")) {
-                    startIndex.set(i);
-                    entries[i] = removeFirst('[', entries[i]);
-                    array.add(parseArray(startIndex, entries));
-                    i = startIndex.get();
-                } else {
-                    array.add(entry.trim());
-                }
-            }
-            return array;
-        }
-
-        private Map<String, Object> map;
-
-        private JsonObject() {
-            map = new LinkedHashMap<>();
-        }
-
-        private void add(String key, Object value){
-            map.put(key, value);
-        }
-
-        public String getString(String key){
-            return (String) map.get(key);
-        }
-
-        public JsonObject getJsonObject(String key) {
-            return (JsonObject) map.get(key);
-        }
-
-        public JsonArray getJsonArray(String key) {
-            return (JsonArray) map.get(key);
-        }
-
-        private void print() {
-            map.forEach((key, value) -> {
-                if(value instanceof JsonObject object) {
-                    System.out.println("Object:");
-                    object.print();
-                    System.out.println("---");
-                }
-                else if(value instanceof JsonArray array) {
-                    System.out.println("Array:");
-                    array.print();
-                    System.out.println("---");
-                }
-                else System.out.println("K: " + key + " | V: " + value);
-            });
-        }
-    }
-
-    static class JsonArray {
-
-        private List<Object> list;
-
-        private JsonArray(){
-            list = new ArrayList<>();
-        }
-
-        private void add(Object value){
-            list.add(value);
-        }
-
-        private void print(){
-            for(Object obj : list) {
-                if(obj instanceof JsonObject object) object.print();
-                else if(obj instanceof JsonArray array) array.print();
-                else System.out.println(obj);
-            }
-        }
+        var o3 = jsonObject.getJsonObject("kontakte");
+        o3.getString("email");
+        o3.getString("telefon");
     }
 }
