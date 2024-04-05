@@ -118,7 +118,7 @@ class JsonParserTest {
 
     public static final String ESCAPE_IN_VALUE = """
             {
-              "escapedCharacters": "Newline: \\\\n, Tab: \\\\t, Backslash: \\\\\\\\, Quote: \\\\\\""
+              "escapedCharacters": "Newline: \n, Tab: \t, Backslash: \\, Quote: ""
             }
             """;
 

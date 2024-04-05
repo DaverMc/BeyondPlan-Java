@@ -67,25 +67,29 @@ public interface JsonParser {
         JsonArray array = new JsonArray();
         for (int i = startIndex.get(); i < entries.length; i++) {
             String entry = entries[i];
-            if (entry.contains("{")) {
+            if (entry.contains("]")) {
+                entry = StringUtils.removeFirst(']', entry);
+                String[] parts = entry.split("\"");
+                if(parts.length < 3) return array;
+                System.out.println(STR."(\{String.join(",", parts)})");
+                String value = parts[1];
+                if(!entry.isBlank()) array.add(value.replace("\"", ""));
+                entries[i] = parts[2];
+                startIndex.set(i);
+                return array;
+            }else if (entry.contains("{")) {
                 startIndex.set(i);
                 entry = StringUtils.removeFirst('{', entry);
                 entries[i] = entry;
                 array.add(parseObject(startIndex, entries));
                 i = startIndex.get() - 1;
-            }else if (entry.contains("]")) {
-                entry = StringUtils.removeFirst(']', entry).trim();
-                if(!entry.isBlank()) array.add(entry);
-                entries[i] = entry;
-                startIndex.set(i);
-                return array;
             } else if (entry.contains("[")) {
                 startIndex.set(i);
                 entries[i] = StringUtils.removeFirst('[', entries[i]);
                 array.add(parseArray(startIndex, entries));
                 i = startIndex.get() - 1;
             } else {
-                if(!entry.isBlank()) array.add(entry.trim());
+                if(!entry.isBlank()) array.add(entry.trim().replace("\"", ""));
             }
         }
         return array;

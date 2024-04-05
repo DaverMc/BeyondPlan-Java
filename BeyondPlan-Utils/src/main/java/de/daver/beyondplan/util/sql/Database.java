@@ -1,6 +1,7 @@
 package de.daver.beyondplan.util.sql;
 
 import de.daver.beyondplan.util.sql.driver.Driver;
+import de.daver.beyondplan.util.sql.statement.Statement;
 
 import java.io.File;
 import java.sql.PreparedStatement;

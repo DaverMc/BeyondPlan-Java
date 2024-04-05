@@ -4,14 +4,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8c90a7ab-3649-459d-9c87-5f346bf4dd79" name="Changes" comment="Finished Set upping JUnit Tests, next step fix all failing tests">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="8c90a7ab-3649-459d-9c87-5f346bf4dd79" name="Changes" comment="Configured build.gradle's&#10;Onley JsonParser Test are failing">
+      <change afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/sql/statement/ColumnType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/sql/statement/ComparisonOperator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/sql/statement/KeyWord.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/sql/statement/builder/AlterStatementBuilder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/sql/statement/builder/CreateStatementBuilder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/sql/statement/builder/DeleteStatementBuilder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/sql/statement/builder/DropStatementBuilder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/sql/statement/builder/InsertIntoStatementBuilder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/sql/statement/builder/SelectStatementBuilder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/sql/statement/builder/StatementBuilder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/sql/statement/builder/UpdateStatementBuilder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/sql/statement/node/ColumnsNode.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/sql/statement/node/IfNode.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/test/java/de/daver/beyondplan/util/sql/statement/StatementBuilderTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BeyondPlan-Client/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/BeyondPlan-Client/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BeyondPlan-Client/src/test/java/de/daver/beyondplan/client/web/WebClientTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/BeyondPlan-Client/src/test/java/de/daver/beyondplan/client/web/WebClientTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BeyondPlan-Core/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/BeyondPlan-Core/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BeyondPlan-Utils/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/BeyondPlan-Utils/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/json/JsonParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/json/JsonParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/sql/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/sql/Database.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/sql/Statement.java" beforeDir="false" afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/sql/statement/Statement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BeyondPlan-Utils/src/test/java/de/daver/beyondplan/util/json/JsonParserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/test/java/de/daver/beyondplan/util/json/JsonParserTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BeyondPlan-Utils/src/test/java/de/daver/beyondplan/util/sql/DatabaseTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/test/java/de/daver/beyondplan/util/sql/DatabaseTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,9 +75,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="JUnit5 Test Class" />
+        <option value="Interface" />
         <option value="Class" />
+        <option value="Record" />
       </list>
     </option>
   </component>
@@ -83,6 +97,9 @@
     &quot;accountId&quot;: &quot;e71b5b0c-ebb5-4bc6-9e61-09b93171dbe6&quot;
   }
 }</component>
+  <component name="KubernetesApiProvider"><![CDATA[{
+  "isMigrated": true
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
@@ -134,15 +151,20 @@
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
+    <key name="MoveMembersDialog.RECENTS_KEY">
+      <recent name="de.daver.beyondplan.util.sql.statement.CreateStatementBuilder" />
+    </key>
     <key name="MoveInnerDialog.RECENTS_KEY">
+      <recent name="" />
+      <recent name="de.daver.beyondplan.util.sql.statement" />
       <recent name="de.daver.beyondplan.core.json" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="de.daver.beyondplan.util.sql.statement" />
       <recent name="de.daver.beyondplan.client.web" />
       <recent name="de.daver.beyondplan.core.web" />
       <recent name="de.daver.beyondplan.util.json" />
       <recent name="de.daver.beyondplan.util.sql" />
-      <recent name="de.daver.beyondplan.util" />
     </key>
   </component>
   <component name="RunManager" selected="Gradle.All Tests">
@@ -258,7 +280,7 @@
       <option name="presentableId" value="Default" />
       <updated>1712305594653</updated>
       <workItem from="1712305595934" duration="11549000" />
-      <workItem from="1712323382748" duration="9771000" />
+      <workItem from="1712323382748" duration="19603000" />
     </task>
     <task id="LOCAL-00001" summary="Working Simple first version of JsonParser">
       <option name="closed" value="true" />
@@ -324,7 +346,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712331471460</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Configured build.gradle's&#10;Onley JsonParser Test are failing">
+      <option name="closed" value="true" />
+      <created>1712333377760</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1712333377760</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -339,6 +369,7 @@
     <MESSAGE value="Organized Testing" />
     <MESSAGE value="Implemented JUnit Testing fully" />
     <MESSAGE value="Finished Set upping JUnit Tests, next step fix all failing tests" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finished Set upping JUnit Tests, next step fix all failing tests" />
+    <MESSAGE value="Configured build.gradle's&#10;Onley JsonParser Test are failing" />
+    <option name="LAST_COMMIT_MESSAGE" value="Configured build.gradle's&#10;Onley JsonParser Test are failing" />
   </component>
 </project>

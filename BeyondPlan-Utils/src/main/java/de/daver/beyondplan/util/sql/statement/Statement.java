@@ -1,6 +1,7 @@
-package de.daver.beyondplan.util.sql;
+package de.daver.beyondplan.util.sql.statement;
 
 import de.daver.beyondplan.util.MultiHashMap;
+import de.daver.beyondplan.util.sql.SQLType;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -26,7 +27,7 @@ public class Statement {
         return this;
     }
 
-    protected PreparedStatement prepare(Connection connection) throws SQLException {
+    public PreparedStatement prepare(Connection connection) throws SQLException {
         var prepStatement = connection.prepareStatement(this.command);
         //TODO Set Arguments
         return prepStatement;

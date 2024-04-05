@@ -2,6 +2,11 @@ package de.daver.beyondplan.util.sql;
 
 import de.daver.beyondplan.util.ObjectTransformer;
 import de.daver.beyondplan.util.sql.driver.SQLiteDriver;
+import de.daver.beyondplan.util.sql.statement.ColumnType;
+import de.daver.beyondplan.util.sql.statement.KeyWord;
+import de.daver.beyondplan.util.sql.statement.Statement;
+import de.daver.beyondplan.util.sql.statement.builder.CreateStatementBuilder;
+import de.daver.beyondplan.util.sql.statement.builder.StatementBuilder;
 import org.junit.jupiter.api.*;
 
 import java.io.File;
@@ -67,7 +72,15 @@ class DatabaseTest {
     @Test
     @Order(2)
     void createTable() {
-        assertDoesNotThrow(() -> database.post(CREATE_TABLE));
+        Statement statement = StatementBuilder.create(CreateStatementBuilder.Creatable.TABLE)
+                .ifCondition(KeyWord.Condition.NOT_EXISTS)
+                .name("mitarbeiter")
+                .column("id", ColumnType.INT, true)
+                .column("name", ColumnType.varchar(100))
+                .column("abteilung", ColumnType.varchar(50))
+                .column("eintrittsdatum", ColumnType.DATE)
+                .build();
+        assertDoesNotThrow(() -> database.post(statement));
     }
 
     @Test
