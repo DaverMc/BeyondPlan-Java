@@ -1,6 +1,5 @@
 package de.daver.beyondplan.core;
 
-import de.daver.beyondplan.core.json.JsonArray;
 import de.daver.beyondplan.core.json.JsonObject;
 
 public class TestJsonParsing {
@@ -99,6 +98,48 @@ public class TestJsonParsing {
             }
             """;
 
+    public static final String COMMA_IN_VALUE = """
+            {
+              "description": "This product, unlike the others, is available in multiple colors.",
+              "price": "1,999.99",
+              "tags": ["bestseller, limited edition", "sale, discount"]
+            }
+            """;
+
+    public static final String PARENTHESES_IN_VALUE = """
+            {
+              "title": "\\"The Catcher in the Rye\\" - a novel by J.D. Salinger",
+              "notes": "Considered an \\"American classic\\" among books."
+            }
+            """;
+
+    public static final String ESCAPE_IN_VALUE = """
+            {
+              "escapedCharacters": "Newline: \\\\n, Tab: \\\\t, Backslash: \\\\\\\\, Quote: \\\\\\""
+            }
+            """;
+
+    public static final String MIXED_SYMBOLS = """
+            {
+              "complexString": "This string contains a mix of special characters: commas, quotes, braces {}, and brackets [].",
+              "mathExpression": "x > y ? x : y; // returns x if x is greater than y"
+            }
+            """;
+
+    public static final String BOXED_WITH_SYMBOLS = """
+            {
+              "book": {
+                "title": "Understanding JSON: {A Beginner's Guide}",
+                "chapters": [
+                  "Basics of JSON",
+                  "Advanced Techniques, Tips & Tricks"
+                ],
+                "price": "20.50",
+                "availability": "In stock, ships in 3-5 days"
+              }
+            }
+            """;
+
     public static void main(String[] args) {
         JsonObject json1 =JsonObject.parse(TEST1);
         json1.print();
@@ -117,15 +158,21 @@ public class TestJsonParsing {
 
         var jsonEmptyArray = JsonObject.parse(EMPTY_OBJ_ARRAY);
         jsonEmptyArray.print();
-    }
 
-    private static void simpleTest() {
-        String json = """
-                {
-                  "name": "John Doe",
-                  "age": 30,
-                  "isEmployed": true
-                }
-                """;
+        var jsonComma = JsonObject.parse(COMMA_IN_VALUE);
+        jsonComma.print();
+
+        var jsonParentheses = JsonObject.parse(PARENTHESES_IN_VALUE);
+        jsonParentheses.print();
+
+        var jsonEscape = JsonObject.parse(ESCAPE_IN_VALUE);
+        jsonEscape.print();
+
+        var jsonMixedSymbols = JsonObject.parse(MIXED_SYMBOLS);
+        jsonMixedSymbols.print();
+
+        var jsonBoxedWithSymbols = JsonObject.parse(BOXED_WITH_SYMBOLS);
+        jsonBoxedWithSymbols.print();
+
     }
 }
