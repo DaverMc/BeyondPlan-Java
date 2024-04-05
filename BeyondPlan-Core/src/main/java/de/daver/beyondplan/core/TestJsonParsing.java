@@ -5,15 +5,7 @@ import de.daver.beyondplan.core.json.JsonObject;
 
 public class TestJsonParsing {
 
-    public static void main(String[] args) {
-        var json = """
-                {
-                    "name": "Max Mustermann",
-                    "alter": 30,
-                    "verheiratet": false
-                }
-                """;
-        String s = """
+    public static final String TEST1 = """
                 {
                   "name": "Max Mustermann",
                   "alter": 30,
@@ -36,26 +28,104 @@ public class TestJsonParsing {
                   }
                 }
                 """;
-        JsonObject jsonObject =JsonObject.parse(s);
-        jsonObject.print();
-        jsonObject.getString("name");
-        jsonObject.getString("alter");
-        jsonObject.getString("verheiratet");
 
-        JsonArray array = jsonObject.getJsonArray("adressen");
+    public static final String SIMPLE = """
+            {
+              "name": "John Doe",
+              "age": 30,
+              "isEmployed": true
+            }
+            """;
 
-        var v1 = array.getJsonObject(0);
-        v1.getString("strasse");
-        v1.getString("stadt");
-        v1.getString("plz");
+    public static final String BOXED = """
+            {
+              "person": {
+                "name": "Jane Doe",
+                "address": {
+                  "street": "Main St 123",
+                  "city": "Anytown"
+                },
+                "hobbies": ["Reading", "Hiking", "Coding"]
+              }
+            }
+            """;
 
-        var v2 = array.getJsonObject(1);
-        v2.getString("strasse");
-        v2.getString("stadt");
-        v2.getString("plz");
+    public static final String ARRAY_OF_OBJECTS = """
+            [
+              {
+                "type": "book",
+                "title": "The Great Gatsby",
+                "author": "F. Scott Fitzgerald"
+              },
+              {
+                "type": "book",
+                "title": "Moby Dick",
+                "author": "Herman Melville"
+              }
+            ]
+            """;
 
-        var o3 = jsonObject.getJsonObject("kontakte");
-        o3.getString("email");
-        o3.getString("telefon");
+    public static final String COMPLEX = """
+            {
+              "company": "Acme Corp",
+              "employees": [
+                {
+                  "name": "Alice",
+                  "department": "Development",
+                  "workingHours": {
+                    "start": "09:00",
+                    "end": "17:00"
+                  }
+                },
+                {
+                  "name": "Bob",
+                  "department": "Sales",
+                  "workingHours": {
+                    "start": "10:00",
+                    "end": "18:00"
+                  }
+                }
+              ],
+              "founded": 1999,
+              "hasRemoteWork": true,
+              "officesIn": ["New York", "San Francisco", "Berlin"]
+            }
+            """;
+
+    public static final String EMPTY_OBJ_ARRAY = """
+            {
+              "emptyObject": {},
+              "emptyArray": []
+            }
+            """;
+
+    public static void main(String[] args) {
+        JsonObject json1 =JsonObject.parse(TEST1);
+        json1.print();
+
+        var jsonSimple = JsonObject.parse(SIMPLE);
+        jsonSimple.print();
+
+        var jsonBoxed = JsonObject.parse(BOXED);
+        jsonBoxed.print();
+
+        var jsonArrayOfObjects = JsonObject.parse(ARRAY_OF_OBJECTS);
+        jsonArrayOfObjects.print();
+
+        var jsonComplex = JsonObject.parse(COMPLEX);
+        jsonComplex.print();
+
+        var jsonEmptyArray = JsonObject.parse(EMPTY_OBJ_ARRAY);
+        jsonEmptyArray.print();
+    }
+
+    private static void simpleTest() {
+        String json = """
+                {
+                  "name": "John Doe",
+                  "age": 30,
+                  "isEmployed": true
+                }
+                """;
     }
 }
