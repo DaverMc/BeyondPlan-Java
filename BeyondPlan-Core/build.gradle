@@ -15,6 +15,13 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter'
 }
 
+tasks.withType(JavaCompile) {
+    options.compilerArgs += "--enable-preview";
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
+}
+
 test {
     useJUnitPlatform()
+    jvmArgs += "--enable-preview"
 }

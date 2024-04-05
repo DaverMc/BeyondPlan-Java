@@ -4,12 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8c90a7ab-3649-459d-9c87-5f346bf4dd79" name="Changes" comment="Implemented JUnit Testing fully">
+    <list default="true" id="8c90a7ab-3649-459d-9c87-5f346bf4dd79" name="Changes" comment="Finished Set upping JUnit Tests, next step fix all failing tests">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BeyondPlan-Client/src/main/java/de/daver/beyondplan/client/web/WebClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/BeyondPlan-Client/src/main/java/de/daver/beyondplan/client/web/WebClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BeyondPlan-Core/src/test/java/de/daver/beyondplan/core/web/WebServerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/BeyondPlan-Core/src/test/java/de/daver/beyondplan/core/web/WebServerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/json/JsonParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/json/JsonParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/de/daver/beyondplan/test/ServerClientTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/de/daver/beyondplan/test/ServerClientTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BeyondPlan-Client/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/BeyondPlan-Client/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BeyondPlan-Client/src/test/java/de/daver/beyondplan/client/web/WebClientTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/BeyondPlan-Client/src/test/java/de/daver/beyondplan/client/web/WebClientTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BeyondPlan-Core/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/BeyondPlan-Core/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BeyondPlan-Utils/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/BeyondPlan-Utils/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,7 +39,18 @@
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="BeyondPlan" type="f1a62948:ProjectNode" />
-                <item name="Run Configurations" type="7b0102dc:RunConfigurationsNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="BeyondPlan" type="f1a62948:ProjectNode" />
+                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="BeyondPlan" type="f1a62948:ProjectNode" />
+                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
+                <item name="testCompileClasspath" type="62daadca:ExternalSystemViewDefaultContributor$DependencyScopeExternalSystemNode" />
               </path>
             </expand>
             <select />
@@ -80,6 +93,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.TestJsonParsing.executor": "Run",
+    "Gradle.All Tests.executor": "Run",
     "Gradle.BeyondPlan-Java (Tests).executor": "Run",
     "Gradle.BeyondPlan-Java [BeyondPlan-Client:test].executor": "Run",
     "Gradle.BeyondPlan-Java:BeyondPlan-Core [:BeyondPlan-Core:TestJsonParsing.main()].executor": "Run",
@@ -104,7 +118,10 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "project.structure.last.edited": "SDKs",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -128,15 +145,8 @@
       <recent name="de.daver.beyondplan.util" />
     </key>
   </component>
-  <component name="RunManager" selected="Compound.All Tests">
-    <configuration name="All Tests" type="CompoundRunConfigurationType">
-      <toRun name="BeyondPlan-Java (Tests)" type="GradleRunConfiguration" />
-      <toRun name="Client-Module-Tests" type="GradleRunConfiguration" />
-      <toRun name="Core-Module-Tests" type="GradleRunConfiguration" />
-      <toRun name="Utils-Module-Tests" type="GradleRunConfiguration" />
-      <method v="2" />
-    </configuration>
-    <configuration name="BeyondPlan-Java (Tests)" type="GradleRunConfiguration" factoryName="Gradle">
+  <component name="RunManager" selected="Gradle.All Tests">
+    <configuration name="All Tests" type="GradleRunConfiguration" factoryName="Gradle">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -225,10 +235,9 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Compound.All Tests" />
       <item itemvalue="Gradle.Client-Module-Tests" />
       <item itemvalue="Gradle.Core-Module-Tests" />
-      <item itemvalue="Gradle.BeyondPlan-Java (Tests)" />
+      <item itemvalue="Gradle.All Tests" />
       <item itemvalue="Gradle.Utils-Module-Tests" />
     </list>
   </component>
@@ -249,7 +258,7 @@
       <option name="presentableId" value="Default" />
       <updated>1712305594653</updated>
       <workItem from="1712305595934" duration="11549000" />
-      <workItem from="1712323382748" duration="7843000" />
+      <workItem from="1712323382748" duration="9771000" />
     </task>
     <task id="LOCAL-00001" summary="Working Simple first version of JsonParser">
       <option name="closed" value="true" />
@@ -307,7 +316,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712330356331</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Finished Set upping JUnit Tests, next step fix all failing tests">
+      <option name="closed" value="true" />
+      <created>1712331471460</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1712331471460</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -321,6 +338,7 @@
     <MESSAGE value="toString function added and project new organized, Test that is failing Empty Array" />
     <MESSAGE value="Organized Testing" />
     <MESSAGE value="Implemented JUnit Testing fully" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented JUnit Testing fully" />
+    <MESSAGE value="Finished Set upping JUnit Tests, next step fix all failing tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finished Set upping JUnit Tests, next step fix all failing tests" />
   </component>
 </project>

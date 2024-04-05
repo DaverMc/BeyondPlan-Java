@@ -16,6 +16,13 @@ dependencies {
     implementation group: 'com.mysql', name: 'mysql-connector-j', version: '8.3.0'
 }
 
+tasks.withType(JavaCompile) {
+    options.compilerArgs += "--enable-preview";
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
+}
+
 test {
     useJUnitPlatform()
+    jvmArgs += "--enable-preview"
 }

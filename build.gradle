@@ -10,13 +10,20 @@ repositories {
 }
 
 dependencies {
-    implementation project(':BeyondPlan-Utils')
-    implementation project(':BeyondPlan-Core')
-    implementation project(':BeyondPlan-Client')
+    testImplementation project(':BeyondPlan-Utils')
+    testImplementation project(':BeyondPlan-Core')
+    testImplementation project(':BeyondPlan-Client')
     testImplementation platform('org.junit:junit-bom:5.9.1')
     testImplementation 'org.junit.jupiter:junit-jupiter'
 }
 
+tasks.withType(JavaCompile) {
+    options.compilerArgs += "--enable-preview";
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
+}
+
 test {
     useJUnitPlatform()
+    jvmArgs += "--enable-preview";
 }
