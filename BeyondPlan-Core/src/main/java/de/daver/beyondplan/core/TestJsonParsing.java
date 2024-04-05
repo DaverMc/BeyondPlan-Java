@@ -1,6 +1,7 @@
 package de.daver.beyondplan.core;
 
 import de.daver.beyondplan.core.json.JsonObject;
+import de.daver.beyondplan.core.json.JsonParser;
 
 public class TestJsonParsing {
 
@@ -141,37 +142,37 @@ public class TestJsonParsing {
             """;
 
     public static void main(String[] args) {
-        JsonObject json1 =JsonObject.parse(TEST1);
+        JsonObject json1 = JsonParser.ofString(TEST1);
         json1.print();
 
-        var jsonSimple = JsonObject.parse(SIMPLE);
+        var jsonSimple = JsonParser.ofString(SIMPLE);
         jsonSimple.print();
 
-        var jsonBoxed = JsonObject.parse(BOXED);
+        var jsonBoxed = JsonParser.ofString(BOXED);
         jsonBoxed.print();
 
-        var jsonArrayOfObjects = JsonObject.parse(ARRAY_OF_OBJECTS);
+        var jsonArrayOfObjects = JsonParser.ofString(ARRAY_OF_OBJECTS);
         jsonArrayOfObjects.print();
 
-        var jsonComplex = JsonObject.parse(COMPLEX);
+        var jsonComplex = JsonParser.ofString(COMPLEX);
         jsonComplex.print();
 
-        var jsonEmptyArray = JsonObject.parse(EMPTY_OBJ_ARRAY);
+        var jsonEmptyArray = JsonParser.ofString(EMPTY_OBJ_ARRAY);
         jsonEmptyArray.print();
 
-        var jsonComma = JsonObject.parse(COMMA_IN_VALUE);
+        var jsonComma = JsonParser.ofString(COMMA_IN_VALUE);
         jsonComma.print();
 
-        var jsonParentheses = JsonObject.parse(PARENTHESES_IN_VALUE);
+        var jsonParentheses = JsonParser.ofString(PARENTHESES_IN_VALUE);
         jsonParentheses.print();
 
-        var jsonEscape = JsonObject.parse(ESCAPE_IN_VALUE);
+        var jsonEscape = JsonParser.ofString(ESCAPE_IN_VALUE);
         jsonEscape.print();
 
-        var jsonMixedSymbols = JsonObject.parse(MIXED_SYMBOLS);
+        var jsonMixedSymbols = JsonParser.ofString(MIXED_SYMBOLS);
         jsonMixedSymbols.print();
 
-        var jsonBoxedWithSymbols = JsonObject.parse(BOXED_WITH_SYMBOLS);
+        var jsonBoxedWithSymbols = JsonParser.ofString(BOXED_WITH_SYMBOLS);
         jsonBoxedWithSymbols.print();
 
     }

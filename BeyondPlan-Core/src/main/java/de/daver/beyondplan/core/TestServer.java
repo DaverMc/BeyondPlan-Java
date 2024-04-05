@@ -27,47 +27,6 @@ public class TestServer {
     //TODO
 
     public static void main(String[] args) throws Exception {
-        testJson();
-    }
-
-    public static void testJson() {
-        /*
-        DOWN
-        DOWN
-        UP
-        DOWN
-        UP
-        DOWN
-        UP
-        UP
-         */
-        String s = """
-                {
-                  "name": "Max Mustermann",
-                  "alter": 30,
-                  "verheiratet": false,
-                  "adressen": [
-                    {
-                      "strasse": "Hauptstraße 123",
-                      "stadt": "Musterstadt",
-                      "plz": "12345"
-                    },
-                    {
-                      "strasse": "Nebenstraße 4",
-                      "stadt": "Beispielstadt",
-                      "plz": "67890"
-                    }
-                  ],
-                  "kontakte": {
-                    "email": "max@mustermann.de",
-                    "telefon": "0123-4567890"
-                  }
-                }
-                """;
-        //System.out.println(s);
-        JsonObject json = JsonObject.parseJson(s);
-        json.print(true);
-
     }
 
     public static void httpTest() throws Exception {
