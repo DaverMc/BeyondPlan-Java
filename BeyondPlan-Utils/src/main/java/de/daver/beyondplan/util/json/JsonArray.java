@@ -67,4 +67,12 @@ public class JsonArray {
         jsonBuilder.append("\n").append(indentString).append("]");
         return jsonBuilder.toString();
     }
+
+    public boolean isEmpty() {
+        return list.isEmpty();
+    }
+
+    public boolean contains(Object obj) {
+        return list.contains(obj);
+    }
 }

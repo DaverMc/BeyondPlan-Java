@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="8c90a7ab-3649-459d-9c87-5f346bf4dd79" name="Changes" comment="Organized Testing">
+      <change afterPath="$PROJECT_DIR$/BeyondPlan-Client/src/test/java/de/daver/beyondplan/client/web/WebClientTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BeyondPlan-Core/src/test/java/de/daver/beyondplan/core/web/WebServerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/test/java/de/daver/beyondplan/util/StringUtilsTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/test/java/de/daver/beyondplan/util/json/JsonParserTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/test/java/de/daver/beyondplan/util/sql/DatabaseTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/de/daver/beyondplan/test/ServerClientTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BeyondPlan-Client/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/BeyondPlan-Client/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BeyondPlan-Core/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/BeyondPlan-Core/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BeyondPlan-Core/src/test/java/de/daver/beyondplan/test/core/DatabaseTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BeyondPlan-Core/src/test/java/de/daver/beyondplan/test/core/WebServerTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BeyondPlan-Utils/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/BeyondPlan-Utils/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/StringTransformer.java" beforeDir="false" afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/StringTransformer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/json/JsonArray.java" beforeDir="false" afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/json/JsonArray.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/json/JsonObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/json/JsonObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/json/JsonParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/json/JsonParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BeyondPlan-Utils/src/test/java/de/daver/beyondplan/test/util/JsonParsingTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="BeyondPlan" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="BeyondPlan" type="f1a62948:ProjectNode" />
+                <item name="Run Configurations" type="7b0102dc:RunConfigurationsNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="JUnit5 Test Class" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;DaverMc&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/BeyondPlan/BeyondPlan-Java.git&quot;,
+    &quot;accountId&quot;: &quot;e71b5b0c-ebb5-4bc6-9e61-09b93171dbe6&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
+  <component name="ProjectId" id="2efpg33QWFFRDgSwIztiLGOF4iJ" />
+  <component name="ProjectViewState">
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.TestJsonParsing.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.BeyondPlan-Java (Tests).executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.BeyondPlan-Java [BeyondPlan-Client:test].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.BeyondPlan-Java:BeyondPlan-Core [:BeyondPlan-Core:TestJsonParsing.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.BeyondPlan-Java:BeyondPlan-Utils [:BeyondPlan-Utils:JsonParsingTest.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Build BeyondPlan-Java.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.DatabaseTest (1).executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.DatabaseTest.createTable.executor&quot;: &quot;Debug&quot;,
+    &quot;Gradle.DatabaseTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.StringUtilsTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Utils-Module-Tests.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_directory_selection&quot;: &quot;D:/BeyondPlan-Projekt/BeyondPlan-Java/BeyondPlan-Core/src/main/java/de/daver/beyondplan/core/json&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;sqlite&quot;
+    ]
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="MoveInnerDialog.RECENTS_KEY">
+      <recent name="de.daver.beyondplan.core.json" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="de.daver.beyondplan.client.web" />
+      <recent name="de.daver.beyondplan.core.web" />
+      <recent name="de.daver.beyondplan.util.json" />
+      <recent name="de.daver.beyondplan.util.sql" />
+      <recent name="de.daver.beyondplan.util" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Compound.All Tests">
+    <configuration name="All Tests" type="CompoundRunConfigurationType">
+      <toRun name="BeyondPlan-Java (Tests)" type="GradleRunConfiguration" />
+      <toRun name="Client-Module-Tests" type="GradleRunConfiguration" />
+      <toRun name="Core-Module-Tests" type="GradleRunConfiguration" />
+      <toRun name="Utils-Module-Tests" type="GradleRunConfiguration" />
+      <method v="2" />
+    </configuration>
+    <configuration name="BeyondPlan-Java (Tests)" type="GradleRunConfiguration" factoryName="Gradle">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="Client-Module-Tests" type="GradleRunConfiguration" factoryName="Gradle">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="BeyondPlan-Client:test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="Core-Module-Tests" type="GradleRunConfiguration" factoryName="Gradle">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="BeyondPlan-Core:test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="Utils-Module-Tests" type="GradleRunConfiguration" factoryName="Gradle">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="BeyondPlan-Utils:test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Compound.All Tests" />
+      <item itemvalue="Gradle.Client-Module-Tests" />
+      <item itemvalue="Gradle.Core-Module-Tests" />
+      <item itemvalue="Gradle.BeyondPlan-Java (Tests)" />
+      <item itemvalue="Gradle.Utils-Module-Tests" />
+    </list>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
+        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8c90a7ab-3649-459d-9c87-5f346bf4dd79" name="Changes" comment="" />
+      <created>1712305594653</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1712305594653</updated>
+      <workItem from="1712305595934" duration="11549000" />
+      <workItem from="1712323382748" duration="6755000" />
+    </task>
+    <task id="LOCAL-00001" summary="Working Simple first version of JsonParser">
+      <option name="closed" value="true" />
+      <created>1712312668980</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1712312668980</updated>
+    </task>
+    <task id="LOCAL-00002" summary="More Tests proved me wrong">
+      <option name="closed" value="true" />
+      <created>1712313117192</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1712313117192</updated>
+    </task>
+    <task id="LOCAL-00003" summary="More Tests build In">
+      <option name="closed" value="true" />
+      <created>1712313610085</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1712313610085</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Excluded Parsing to seperate interface">
+      <option name="closed" value="true" />
+      <created>1712313932783</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1712313932783</updated>
+    </task>
+    <task id="LOCAL-00005" summary="toString function added and project new organized, Test that is failing Empty Array">
+      <option name="closed" value="true" />
+      <created>1712315440799</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1712315440799</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Organized Testing">
+      <option name="closed" value="true" />
+      <created>1712317495863</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1712317495863</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Working Simple first version of JsonParser" />
+    <MESSAGE value="More Tests proved me wrong" />
+    <MESSAGE value="More Tests build In" />
+    <MESSAGE value="Excluded Parsing to seperate interface" />
+    <MESSAGE value="toString function added and project new organized, Test that is failing Empty Array" />
+    <MESSAGE value="Organized Testing" />
+    <option name="LAST_COMMIT_MESSAGE" value="Organized Testing" />
+  </component>
+</project>

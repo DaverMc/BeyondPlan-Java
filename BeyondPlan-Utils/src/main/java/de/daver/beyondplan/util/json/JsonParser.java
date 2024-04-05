@@ -19,6 +19,14 @@ public interface JsonParser {
         return parseObject(startIndex, parts);
     }
 
+    static JsonArray arrayOfString(String jsonString) {
+        String[] parts = jsonString.split(",");
+        parts[0] = StringUtils.removeFirst('[', parts[0]);
+        parts[parts.length - 1] = StringUtils.removeLast(']', parts[parts.length - 1]);
+        AtomicInteger startIndex = new AtomicInteger(0);
+        return parseArray(startIndex, parts);
+    }
+
     private static JsonObject parseObject(AtomicInteger startIndex, String[] entries) {
         JsonObject jsonObject = new JsonObject();
         for (int i = startIndex.get(); i < entries.length; i++) {
@@ -26,9 +34,6 @@ public interface JsonParser {
             if (entry.contains("}")) {
                 entry = StringUtils.removeFirst('}', entry);
                 String[] parts = entry.split("\"");
-                for(String part : parts) {
-                    System.out.println(part);
-                }
                 String key = entry.split(":")[0].trim();
                 String value = parts[3]; //FIXME Hier crasht empty array überprüfen wie viele teile es gibt
                 jsonObject.add(key, value);
@@ -51,7 +56,7 @@ public interface JsonParser {
                 i = startIndex.get();
             } else {
                 String key = entry.split(":")[0].trim();
-                String value = entry.replace(key + ":", "").trim();
+                String value = entry.replace(key + ":", "").trim().replace("\"", "");
                 jsonObject.add(key, value);
             }
         }

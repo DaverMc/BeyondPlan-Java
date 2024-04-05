@@ -65,4 +65,8 @@ public class JsonObject {
         jsonBuilder.append("\n").append(indentString).append("}");
         return jsonBuilder.toString();
     }
+
+    public boolean isEmpty() {
+        return map.isEmpty();
+    }
 }
