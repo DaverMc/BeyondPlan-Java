@@ -1,7 +1,5 @@
 package de.daver.beyondplan.util.sql.statement.node;
 
-import de.daver.beyondplan.util.sql.statement.ComparisonOperator;
-
 public record Condition(String column, String value, ComparisonOperator operator) implements KeyWord {
 
     public Condition(String column, String value) {

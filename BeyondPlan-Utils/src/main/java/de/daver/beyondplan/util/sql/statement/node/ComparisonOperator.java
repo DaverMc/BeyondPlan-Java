@@ -1,4 +1,4 @@
-package de.daver.beyondplan.util.sql.statement;
+package de.daver.beyondplan.util.sql.statement.node;
 
 public enum ComparisonOperator {
     EQUAL("="),
