@@ -1,6 +1,6 @@
-package de.daver.beyondplan.util.sql.statement;
+package de.daver.beyondplan.util.sql.statement.node;
 
-public interface ColumnType extends KeyWord{
+public interface ColumnType extends KeyWord {
 
     ColumnType DATE = () -> "DATE";
     ColumnType INT = () -> "INT";
@@ -17,7 +17,7 @@ public interface ColumnType extends KeyWord{
 
         @Override
         public String keyword() {
-            return STR."varchar(\{size})";
+            return STR."VARCHAR(\{size})";
         }
     }
 

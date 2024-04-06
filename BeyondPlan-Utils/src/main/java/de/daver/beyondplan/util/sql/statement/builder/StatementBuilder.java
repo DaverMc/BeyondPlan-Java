@@ -1,12 +1,14 @@
 package de.daver.beyondplan.util.sql.statement.builder;
 
-import de.daver.beyondplan.util.sql.statement.KeyWord;
+import de.daver.beyondplan.util.sql.statement.keywordBuilder.KeyWordBuilder;
+import de.daver.beyondplan.util.sql.statement.node.Command;
+import de.daver.beyondplan.util.sql.statement.node.KeyWord;
 import de.daver.beyondplan.util.sql.statement.Statement;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class StatementBuilder {
+public class StatementBuilder implements KeyWordBuilder {
 
     protected final List<KeyWord> keyWords;
 
@@ -16,13 +18,10 @@ public abstract class StatementBuilder {
 
     protected StatementBuilder(String keyWord) {
         this();
-        keyWords.add(new KeyWord.Command(keyWord));
+        keyWords.add(new Command(keyWord));
     }
 
-    protected abstract void process();
-
     public String toString() {
-        process();
         return STR."\{String.join(" ", keyWords.stream().map(KeyWord::keyword).toList())};";
     }
 
@@ -56,6 +55,11 @@ public abstract class StatementBuilder {
 
     public static DropStatementBuilder drop(CreateStatementBuilder.Creatable creatable) {
         return new DropStatementBuilder(creatable);
+    }
+
+    @Override
+    public List<KeyWord> keyWords() {
+        return keyWords;
     }
 
 }

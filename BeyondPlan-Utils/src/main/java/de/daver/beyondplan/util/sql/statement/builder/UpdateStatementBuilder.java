@@ -1,36 +1,17 @@
 package de.daver.beyondplan.util.sql.statement.builder;
 
-import de.daver.beyondplan.util.sql.statement.KeyWord;
+import de.daver.beyondplan.util.sql.statement.keywordBuilder.NameKeyWordBuilder;
+import de.daver.beyondplan.util.sql.statement.keywordBuilder.SetKeyWordBuilder;
+import de.daver.beyondplan.util.sql.statement.keywordBuilder.WhereKeyWordBuilder;
+import de.daver.beyondplan.util.sql.statement.node.*;
 
-public class UpdateStatementBuilder extends StatementBuilder{
+
+public class UpdateStatementBuilder extends StatementBuilder implements WhereKeyWordBuilder<UpdateStatementBuilder>,
+        NameKeyWordBuilder<UpdateStatementBuilder>,
+        SetKeyWordBuilder<UpdateStatementBuilder>
+{
 
     public UpdateStatementBuilder(){
         super("UPDATE");
     }
-
-    @Override
-    protected void process() {
-
-    }
-
-    public UpdateStatementBuilder table(String table){
-        return this;
-    }
-
-    public UpdateStatementBuilder where(KeyWord.Condition condition){
-        return this;
-    }
-
-    public UpdateStatementBuilder set(UpdateAction action){
-        return this;
-    }
-
-    public record UpdateAction(String columnName, String value) implements KeyWord {
-
-        @Override
-        public String keyword() {
-            return STR."'\{columnName}' = '\{value}'";
-        }
-    }
-
 }

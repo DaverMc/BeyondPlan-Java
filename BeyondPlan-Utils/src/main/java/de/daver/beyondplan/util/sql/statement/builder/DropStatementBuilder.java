@@ -1,18 +1,11 @@
 package de.daver.beyondplan.util.sql.statement.builder;
 
-public class DropStatementBuilder extends StatementBuilder {
+import de.daver.beyondplan.util.sql.statement.keywordBuilder.NameKeyWordBuilder;
+
+public class DropStatementBuilder extends StatementBuilder implements NameKeyWordBuilder<DropStatementBuilder> {
 
     public DropStatementBuilder(CreateStatementBuilder.Creatable creatable) {
         super("DROP");
         keyWords.add(creatable);
-    }
-
-    public DropStatementBuilder name(String tableName) {
-        return this;
-    }
-
-    @Override
-    protected void process() {
-
     }
 }

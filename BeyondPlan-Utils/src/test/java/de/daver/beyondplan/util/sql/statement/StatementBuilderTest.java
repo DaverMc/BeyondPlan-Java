@@ -1,10 +1,8 @@
 package de.daver.beyondplan.util.sql.statement;
 
-import de.daver.beyondplan.util.sql.Database;
 import de.daver.beyondplan.util.sql.statement.builder.CreateStatementBuilder;
-import de.daver.beyondplan.util.sql.statement.builder.SelectStatementBuilder;
 import de.daver.beyondplan.util.sql.statement.builder.StatementBuilder;
-import de.daver.beyondplan.util.sql.statement.builder.UpdateStatementBuilder;
+import de.daver.beyondplan.util.sql.statement.node.*;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -13,53 +11,42 @@ class StatementBuilderTest {
 
     @Test
     void createTableStatement() {
-        String expectedSQL = "CREATE TABLE IF NOT EXISTS mitarbeiter (\n" +
-                "    id INT PRIMARY KEY,\n" +
-                "    name VARCHAR(100),\n" +
-                "    abteilung VARCHAR(50),\n" +
-                "    eintrittsdatum DATE\n" +
-                ");";
+        String expectedSQL = "CREATE TABLE IF NOT EXISTS mitarbeiter (id INT PRIMARY KEY, name VARCHAR(100), abteilung VARCHAR(50), eintrittsdatum DATE);";
         String sql = StatementBuilder.create(CreateStatementBuilder.Creatable.TABLE)
-                .ifCondition(KeyWord.Condition.NOT_EXISTS)
+                .IF(Condition.NOT_EXISTS)
                 .name("mitarbeiter")
-                .column("id", ColumnType.INT, true)
-                .column("name", ColumnType.varchar(100))
-                .column("abteilung", ColumnType.varchar(50))
-                .column("eintrittdatum", ColumnType.DATE)
+                .columns(new Column("id", ColumnType.INT, true),
+                        new Column("name", ColumnType.varchar(100)),
+                        new Column("abteilung", ColumnType.varchar(50)),
+                        new Column("eintrittsdatum", ColumnType.DATE))
                 .toString();
         assertEquals(expectedSQL, sql);
     }
 
     @Test
     void insertStatement() {
-        String expectedSQL = "INSERT INTO mitarbeiter (id, name, abteilung, eintrittsdatum) VALUES\n" +
-                "(1, 'Max Mustermann', 'IT', '2021-01-10'),\n" +
+        String expectedSQL ="INSERT INTO mitarbeiter (id, name, abteilung, eintrittsdatum) VALUES (1, 'Max Mustermann', 'IT', '2021-01-10'),\n" +
                 "(2, 'Erika Mustermann', 'HR', '2021-02-15'),\n" +
                 "(3, 'John Doe', 'Marketing', '2021-03-01');";
 
         String actualSQL = StatementBuilder.insertInto()
-                .table("mitarbeiter")
-                .column("id")
-                .column("name")
-                .column("abteilung")
-                .column("eintrittsdatum")
-                .value("1", "Max Mustermann", "IT", "2021-01-10")
-                .value("2", "Erika Mustermann", "HR", "2021-02-15")
-                .value("3", "John Doe", "Marketing", "2021-03-01")
+                .name("mitarbeiter")
+                .columns("id","name", "abteilung", "eintrittsdatum")
+                .VALUES(new Entry(1, "Max Mustermann", "IT", "2021-01-10"),
+                        new Entry(2, "Erika Mustermann", "HR", "2021-02-15"),
+                        new Entry(3, "John Doe", "Marketing", "2021-03-01"))
                 .toString();
         assertEquals(expectedSQL, actualSQL);
     }
 
     @Test
     void updateStatement() {
-        String expectedSQL = "UPDATE mitarbeiter\n" +
-                "SET abteilung = 'Finanzen'\n" +
-                "WHERE id = 2;";
+        String expectedSQL = "UPDATE mitarbeiter SET abteilung = 'Finanzen' WHERE id = 2;";
 
         String actualSQL = StatementBuilder.update()
-                .table("mitarbeiter")
-                .set(new UpdateStatementBuilder.UpdateAction("abteilung", "Finanzen"))
-                .where(new KeyWord.Condition("id", "2"))
+                .name("mitarbeiter")
+                .SET(new UpdateAction("abteilung", "Finanzen"))
+                .WHERE(new Condition("id", "2"))
                 .toString();
 
         assertEquals(expectedSQL, actualSQL);
@@ -70,8 +57,8 @@ class StatementBuilderTest {
         String expectedSQL = "DELETE FROM mitarbeiter WHERE id = 3;";
 
         String actualSQL = StatementBuilder.delete()
-                .from("mitarbeiter")
-                .where(new KeyWord.Condition("id", "3"))
+                .FROM("mitarbeiter")
+                .WHERE(new Condition("id", "3"))
                 .toString();
 
         assertEquals(expectedSQL, actualSQL);
@@ -82,8 +69,8 @@ class StatementBuilderTest {
         String expectedSQL = "SELECT * FROM mitarbeiter;";
 
         String actualSQL = StatementBuilder.select()
-                .target(SelectStatementBuilder.SelectTarget.ALL)
-                .from("mitarbeiter")
+                .target(SelectTarget.ALL)
+                .FROM("mitarbeiter")
                 .toString();
 
         assertEquals(expectedSQL, actualSQL);
@@ -94,9 +81,9 @@ class StatementBuilderTest {
         String expectedSQL = "SELECT COUNT(*) AS AnzahlMitarbeiter FROM mitarbeiter;";
 
         String actualSQL = StatementBuilder.select()
-                .count(SelectStatementBuilder.SelectTarget.ALL)
-                .as("AnzahlMitarbeiter")
-                .from("mitarbeiter")
+                .COUNT(SelectTarget.ALL)
+                .AS("AnzahlMitarbeiter")
+                .FROM("mitarbeiter")
                 .toString();
 
         assertEquals(expectedSQL, actualSQL);
@@ -107,9 +94,9 @@ class StatementBuilderTest {
         String expectedSQL = "SELECT MAX(eintrittsdatum) AS LetzterEintritt FROM mitarbeiter;";
 
         String actualSQL = StatementBuilder.select()
-                .max(SelectStatementBuilder.SelectTarget.column("eintrittsdatum"))
-                .as("LetzterEintritt")
-                .from("mitarbeiter")
+                .MAX(SelectTarget.column("eintrittsdatum"))
+                .AS("LetzterEintritt")
+                .FROM("mitarbeiter")
                 .toString();
 
         assertEquals(expectedSQL, actualSQL);
@@ -121,7 +108,7 @@ class StatementBuilderTest {
 
         String actualSQL = StatementBuilder.alter(CreateStatementBuilder.Creatable.TABLE)
                 .name("mitarbeiter")
-                .addColumn("gehalt", ColumnType.decimal(10, 2))
+                .ADD("gehalt", ColumnType.decimal(10, 2))
                 .toString();
 
         assertEquals(expectedSQL, actualSQL);
@@ -133,7 +120,7 @@ class StatementBuilderTest {
 
         String actualSQL = StatementBuilder.create(CreateStatementBuilder.Creatable.INDEX)
                 .name("idx_abteilung")
-                .on("mitarbeiter", "abteilung")
+                .ON("mitarbeiter", "abteilung")
                 .toString();
 
         assertEquals(expectedSQL, actualSQL);

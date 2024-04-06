@@ -2,11 +2,12 @@ package de.daver.beyondplan.util.sql;
 
 import de.daver.beyondplan.util.ObjectTransformer;
 import de.daver.beyondplan.util.sql.driver.SQLiteDriver;
-import de.daver.beyondplan.util.sql.statement.ColumnType;
-import de.daver.beyondplan.util.sql.statement.KeyWord;
+import de.daver.beyondplan.util.sql.statement.node.Column;
+import de.daver.beyondplan.util.sql.statement.node.ColumnType;
 import de.daver.beyondplan.util.sql.statement.Statement;
 import de.daver.beyondplan.util.sql.statement.builder.CreateStatementBuilder;
 import de.daver.beyondplan.util.sql.statement.builder.StatementBuilder;
+import de.daver.beyondplan.util.sql.statement.node.Condition;
 import org.junit.jupiter.api.*;
 
 import java.io.File;
@@ -73,12 +74,12 @@ class DatabaseTest {
     @Order(2)
     void createTable() {
         Statement statement = StatementBuilder.create(CreateStatementBuilder.Creatable.TABLE)
-                .ifCondition(KeyWord.Condition.NOT_EXISTS)
+                .IF(Condition.NOT_EXISTS)
                 .name("mitarbeiter")
-                .column("id", ColumnType.INT, true)
-                .column("name", ColumnType.varchar(100))
-                .column("abteilung", ColumnType.varchar(50))
-                .column("eintrittsdatum", ColumnType.DATE)
+                .columns(new Column("id", ColumnType.INT, true),
+                        new Column("name", ColumnType.varchar(100)),
+                        new Column("abteilung", ColumnType.varchar(50)),
+                        new Column("eintrittsdatum", ColumnType.DATE))
                 .build();
         assertDoesNotThrow(() -> database.post(statement));
     }

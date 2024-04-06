@@ -1,26 +1,15 @@
 package de.daver.beyondplan.util.sql.statement.builder;
 
-public class InsertIntoStatementBuilder extends StatementBuilder{
+import de.daver.beyondplan.util.sql.statement.keywordBuilder.ColumnsKeyWordBuilder;
+import de.daver.beyondplan.util.sql.statement.keywordBuilder.NameKeyWordBuilder;
+import de.daver.beyondplan.util.sql.statement.keywordBuilder.ValuesKeyWordBuilder;
+
+public class InsertIntoStatementBuilder extends StatementBuilder implements NameKeyWordBuilder<InsertIntoStatementBuilder>,
+                                                                            ColumnsKeyWordBuilder<InsertIntoStatementBuilder>,
+                                                                            ValuesKeyWordBuilder<InsertIntoStatementBuilder> {
 
     public InsertIntoStatementBuilder(){
         super("INSERT INTO");
-    }
-
-    @Override
-    protected void process() {
-
-    }
-
-    public InsertIntoStatementBuilder table(String table){
-        return this;
-    }
-
-    public InsertIntoStatementBuilder column(String column){
-        return this;
-    }
-
-    public InsertIntoStatementBuilder value(String...values){
-        return this;
     }
 
 }
