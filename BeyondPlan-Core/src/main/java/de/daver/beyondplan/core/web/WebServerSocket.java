@@ -43,8 +43,6 @@ public class WebServerSocket {
         try {
             while (running) {
                 Socket socket = server.accept();
-                System.out.println("Verbindung akzeptiert: " + socket.getRemoteSocketAddress());
-
                 BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                 OutputStream out = socket.getOutputStream();
                 Client client = new Client(socket, in, out);
@@ -69,11 +67,15 @@ public class WebServerSocket {
                     + "Connection: Upgrade\r\n"
                     + "Upgrade: websocket\r\n"
                     + "Sec-WebSocket-Accept: s3pPLMBiTxaQ9kYGzzhZRbK+xOo=\r\n\r\n";
-            client.out().write(response.getBytes("UTF-8"));
-            client.out().flush();
-            // Sie müssen den 'Sec-WebSocket-Accept'-Wert entsprechend berechnen
-            // basierend auf dem 'Sec-WebSocket-Key', den der Client sendet
+            client.send(response);
         }
     }
-    public record Client(Socket socket, BufferedReader in, OutputStream out) {}
+    public record Client(Socket socket, BufferedReader in, OutputStream out) {
+
+        public void send(String message) throws IOException {
+            out.write(message.getBytes("UTF-8"));
+            out.flush();
+        }
+
+    }
 }

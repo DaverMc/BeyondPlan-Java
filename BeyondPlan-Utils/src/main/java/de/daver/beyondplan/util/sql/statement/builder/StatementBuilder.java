@@ -1,9 +1,9 @@
 package de.daver.beyondplan.util.sql.statement.builder;
 
+import de.daver.beyondplan.util.sql.statement.Statement;
 import de.daver.beyondplan.util.sql.statement.keywordBuilder.KeyWordBuilder;
 import de.daver.beyondplan.util.sql.statement.node.Command;
 import de.daver.beyondplan.util.sql.statement.node.KeyWord;
-import de.daver.beyondplan.util.sql.statement.Statement;
 
 import java.util.ArrayList;
 import java.util.List;

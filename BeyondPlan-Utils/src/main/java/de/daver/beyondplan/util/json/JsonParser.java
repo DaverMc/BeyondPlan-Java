@@ -2,14 +2,9 @@ package de.daver.beyondplan.util.json;
 
 import de.daver.beyondplan.util.StringUtils;
 
-import java.net.http.HttpResponse;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public interface JsonParser {
-
-    static JsonObject ofHttpResponse(HttpResponse<String> response) {
-        return ofString(response.body());
-    }
 
     static JsonObject ofString(String jsonString) {
         String[] parts = jsonString.split(",");
@@ -22,76 +17,107 @@ public interface JsonParser {
     static JsonArray arrayOfString(String jsonString) {
         String[] parts = jsonString.split(",");
         parts[0] = StringUtils.removeFirst('[', parts[0]);
-        parts[parts.length - 1] = StringUtils.removeLast(']', parts[parts.length - 1]);
         AtomicInteger startIndex = new AtomicInteger(0);
         return parseArray(startIndex, parts);
     }
 
+    static Node keyValueRest(String entry){
+        Node keyRest = keyRest(entry);
+        String rest = keyRest.rest;
+
+        int start = rest.indexOf('"');
+        int end = rest.lastIndexOf('"');
+        String value;
+        if(start == -1 || end == -1){
+            value = rest;
+        } else value = rest.substring(start + 1, end);
+
+        rest = rest.replace(value, "");
+
+
+        return new Node(keyRest.key.trim(), value.trim(), rest);
+    }
+
+    static Node keyRest(String entry){
+        String key = entry.split(":")[0];
+        String rest = entry.replace(key + ":", "");
+        int start = key.indexOf('"');
+        int end = key.lastIndexOf('"');
+        key = key.substring(start + 1, end);
+        return new Node(key.trim(), "", rest);
+    }
+
+    record Node(String key, String value, String rest){}
+
     private static JsonObject parseObject(AtomicInteger startIndex, String[] entries) {
         JsonObject jsonObject = new JsonObject();
         for (int i = startIndex.get(); i < entries.length; i++) {
+
             String entry = entries[i];
             if (entry.contains("}")) {
                 entry = StringUtils.removeFirst('}', entry);
-                String[] parts = entry.split("\"");
-                String key = entry.split(":")[0].trim();
-                String value = parts[3];
-                jsonObject.add(key, value);
-                entries[i] = parts[4];
+                Node node = keyValueRest(entry);
+                jsonObject.add(node.key, node.value);
+                entries[i] = node.rest;
                 startIndex.set(i);
                 return jsonObject;
             }else if (entry.contains("[")) {
                 startIndex.set(i);
                 entry = StringUtils.removeFirst('[', entry);
-                String key = entry.split(":")[0].trim();
-                entries[i] = entry.replace(key + ":" , "");
-                jsonObject.add(key, parseArray(startIndex, entries));
+                Node node = keyRest(entry);
+                entries[i] = node.rest;
+                jsonObject.add(node.key, parseArray(startIndex, entries));
                 i = startIndex.get();
             } else if (entry.contains("{")) {
                 startIndex.set(i);
                 entry = StringUtils.removeFirst('{', entry);
-                String key = entry.split(":")[0].trim();
-                entries[i] = entry.replace(key + ":", "");
-                jsonObject.add(key, parseObject(startIndex, entries));
+                Node node = keyRest(entry);
+                entries[i] = node.rest;
+                jsonObject.add(node.key, parseObject(startIndex, entries));
                 i = startIndex.get();
             } else {
-                String key = entry.split(":")[0].trim();
-                String value = entry.replace(key + ":", "").trim().replace("\"", "");
-                jsonObject.add(key, value);
+                Node node = keyValueRest(entry);
+                jsonObject.add(node.key, node.value);
             }
         }
         return jsonObject;
+    }
+
+    static String value(String entry) {
+        int start = entry.indexOf('"');
+        int end = entry.lastIndexOf('"');
+        String value = entry.substring(start + 1, end);
+        return value;
     }
 
     private static JsonArray parseArray(AtomicInteger startIndex, String[] entries) {
         JsonArray array = new JsonArray();
         for (int i = startIndex.get(); i < entries.length; i++) {
             String entry = entries[i];
+            System.out.println("ENTRY: " + entry);
             if (entry.contains("]")) {
                 entry = StringUtils.removeFirst(']', entry);
                 String[] parts = entry.split("\"");
-                if(parts.length < 3) return array;
-                System.out.println(STR."(\{String.join(",", parts)})");
                 String value = parts[1];
                 if(!entry.isBlank()) array.add(value.replace("\"", ""));
                 entries[i] = parts[2];
                 startIndex.set(i);
                 return array;
-            }else if (entry.contains("{")) {
-                startIndex.set(i);
-                entry = StringUtils.removeFirst('{', entry);
-                entries[i] = entry;
-                array.add(parseObject(startIndex, entries));
-                i = startIndex.get() - 1;
             } else if (entry.contains("[")) {
                 startIndex.set(i);
                 entries[i] = StringUtils.removeFirst('[', entries[i]);
                 array.add(parseArray(startIndex, entries));
-                i = startIndex.get() - 1;
-            } else {
-                if(!entry.isBlank()) array.add(entry.trim().replace("\"", ""));
+                i = startIndex.get();
+            } else if (entry.contains("{")) {
+                startIndex.set(i);
+                entry = StringUtils.removeFirst('{', entry);
+                entries[i] = entry;
+                array.add(parseObject(startIndex, entries));
+                i = startIndex.get();
+            }  else if(!entry.isBlank()) {
+                    array.add(value(entry));
+                }
             }
-        }
         return array;
     }
 

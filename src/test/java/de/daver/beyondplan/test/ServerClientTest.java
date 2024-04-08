@@ -11,6 +11,9 @@ import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.io.OutputStream;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -22,11 +25,7 @@ public class ServerClientTest {
         server.createContext("/test", new AsyncHttpHandler() {
             @Override
             public void handleAsync(HttpExchange httpExchange) throws IOException {
-                String response = """
-                {
-                    "text": "This is the response"
-                }
-                """;
+                String response = "This is the response";
                 httpExchange.sendResponseHeaders(200, response.length());
                 OutputStream os = httpExchange.getResponseBody();
                 os.write(response.getBytes());
@@ -36,9 +35,13 @@ public class ServerClientTest {
         server.start();
 
         WebClient webClient = new WebClient();
-
-        JsonObject result = assertDoesNotThrow(webClient::request);
-        assertEquals("This is the response", result.getString("text"));
+        HttpRequest request = assertDoesNotThrow(() -> HttpRequest.newBuilder()
+                .uri(new URI("http://localhost:8080/test"))
+                .version(HttpClient.Version.HTTP_2)
+                .GET()
+                .build());
+        String result = assertDoesNotThrow(() -> webClient.request(request));
+        assertEquals("This is the response", result);
 
         server.stop();
     }

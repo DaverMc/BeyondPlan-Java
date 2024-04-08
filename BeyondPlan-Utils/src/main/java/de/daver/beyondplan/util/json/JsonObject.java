@@ -19,15 +19,15 @@ public class JsonObject {
     }
 
     public String getString(String key) {
-        return (String) map.get("\"" + key + "\"");
+        return (String) map.get(key);
     }
 
     public JsonObject getJsonObject(String key) {
-        return (JsonObject) map.get("\"" + key + "\"");
+        return (JsonObject) map.get(key);
     }
 
     public JsonArray getJsonArray(String key) {
-        return (JsonArray) map.get("\"" + key + "\"");
+        return (JsonArray) map.get(key);
     }
 
     public <T> T get(String key, StringTransformer<T> transformer) {

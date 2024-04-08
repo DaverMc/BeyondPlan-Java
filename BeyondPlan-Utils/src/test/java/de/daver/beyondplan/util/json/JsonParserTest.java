@@ -2,6 +2,7 @@ package de.daver.beyondplan.util.json;
 
 import de.daver.beyondplan.util.StringTransformer;
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class JsonParserTest {
@@ -111,8 +112,8 @@ class JsonParserTest {
 
     public static final String PARENTHESES_IN_VALUE = """
             {
-              "title": "\\"The Catcher in the Rye\\" - a novel by J.D. Salinger",
-              "notes": "Considered an \\"American classic\\" among books."
+              "title": "The Catcher in the Rye" - a novel by J.D. Salinger",
+              "notes": "Considered an American classic" among books."
             }
             """;
 
@@ -149,6 +150,7 @@ class JsonParserTest {
     void baseTestWithVariables() {
         // Parse das BASE_TEST JSON-String zu einem JsonObject
         var jsonObject = JsonParser.ofString(BASE_TEST);
+        System.out.println(jsonObject);
 
         // Überprüfe und speichere den Namen
         String name = jsonObject.getString("name");
@@ -198,6 +200,7 @@ class JsonParserTest {
     void simple() {
         // Parse das JSON-String zu einem JsonObject
         var jsonObject = JsonParser.ofString(SIMPLE);
+        System.out.println(jsonObject);
 
         // Überprüfe den Namen
         String name = jsonObject.getString("name");
@@ -216,6 +219,7 @@ class JsonParserTest {
     void boxed() {
         // Parse das BOXED JSON-String zu einem JsonObject
         var jsonObject = JsonParser.ofString(BOXED);
+        System.out.println(jsonObject);
 
         // Zugriff auf das "person" Objekt
         JsonObject person = jsonObject.getJsonObject("person");
@@ -245,6 +249,7 @@ class JsonParserTest {
     @Test
     void arrayOfObjects() {
         JsonArray jsonArray = JsonParser.arrayOfString(ARRAY_OF_OBJECTS);
+        System.out.println(jsonArray);
 
         // Erstes Buch
         JsonObject firstBook = jsonArray.getJsonObject(0);
@@ -262,6 +267,7 @@ class JsonParserTest {
     @Test
     void complex() {
         JsonObject jsonObject = JsonParser.ofString(COMPLEX);
+        System.out.println(jsonObject);
 
         assertEquals("Acme Corp", jsonObject.getString("company"));
         assertEquals(1999, jsonObject.get("founded", StringTransformer.INTEGER));

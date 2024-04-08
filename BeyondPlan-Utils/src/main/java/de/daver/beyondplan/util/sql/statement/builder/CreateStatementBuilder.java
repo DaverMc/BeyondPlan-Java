@@ -4,8 +4,7 @@ import de.daver.beyondplan.util.sql.statement.keywordBuilder.ColumnsKeyWordBuild
 import de.daver.beyondplan.util.sql.statement.keywordBuilder.IfKeyWordBuilder;
 import de.daver.beyondplan.util.sql.statement.keywordBuilder.NameKeyWordBuilder;
 import de.daver.beyondplan.util.sql.statement.keywordBuilder.OnKeyWordBuilder;
-import de.daver.beyondplan.util.sql.statement.node.ColumnType;
-import de.daver.beyondplan.util.sql.statement.node.*;
+import de.daver.beyondplan.util.sql.statement.node.KeyWord;
 
 public class CreateStatementBuilder extends StatementBuilder implements ColumnsKeyWordBuilder<CreateStatementBuilder>,
                                                                         NameKeyWordBuilder <CreateStatementBuilder>,

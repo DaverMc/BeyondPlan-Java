@@ -4,52 +4,42 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8c90a7ab-3649-459d-9c87-5f346bf4dd79" name="Changes" comment="Create Table creatable with Builder">
-      <change afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/sql/statement/keywordBuilder/AddKeyWordBuilder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/sql/statement/keywordBuilder/AsKeyWordBuilder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/sql/statement/keywordBuilder/ColumnsKeyWordBuilder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/sql/statement/keywordBuilder/CountKeyWordBuilder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/sql/statement/keywordBuilder/FromKeyWordBuilder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/sql/statement/keywordBuilder/IfKeyWordBuilder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/sql/statement/keywordBuilder/KeyWordBuilder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/sql/statement/keywordBuilder/MaxKeyWordBuilder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/sql/statement/keywordBuilder/NameKeyWordBuilder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/sql/statement/keywordBuilder/OnKeyWordBuilder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/sql/statement/keywordBuilder/SetKeyWordBuilder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/sql/statement/keywordBuilder/TargetKeyWordBuilder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/sql/statement/keywordBuilder/ValuesKeyWordBuilder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/sql/statement/keywordBuilder/WhereKeyWordBuilder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/sql/statement/node/AddNode.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/sql/statement/node/AsNode.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/sql/statement/node/Column.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/sql/statement/node/Command.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/sql/statement/node/Condition.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/sql/statement/node/CountNode.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/sql/statement/node/Entry.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/sql/statement/node/FromNode.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/sql/statement/node/MaxNode.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/sql/statement/node/NameNode.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/sql/statement/node/OnNode.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/sql/statement/node/SelectTarget.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/sql/statement/node/SetNode.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/sql/statement/node/UpdateAction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/sql/statement/node/ValuesNode.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/sql/statement/node/WhereNode.java" afterDir="false" />
+    <list default="true" id="8c90a7ab-3649-459d-9c87-5f346bf4dd79" name="Changes" comment="Reorganized Nodes to Builder classes">
+      <change afterPath="$PROJECT_DIR$/BeyondPlan-Client/src/main/java/de/daver/beyondplan/client/Client.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/Parser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/Serializer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/config/Cache.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/config/CacheList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/config/ConfigFormat.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/config/ListGetter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/config/ValueGetter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/config/format/JSONFormat.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/config/format/JsonSyntax.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/file/FileUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/test/java/de/daver/beyondplan/util/config/CacheTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/test/java/de/daver/beyondplan/util/config/format/JSONFormatTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/test/java/de/daver/beyondplan/util/file/FileUtilsTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/sql/statement/ColumnType.java" beforeDir="false" afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/sql/statement/node/ColumnType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/sql/statement/KeyWord.java" beforeDir="false" afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/sql/statement/node/KeyWord.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/sql/statement/builder/AlterStatementBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/sql/statement/builder/AlterStatementBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BeyondPlan-Client/src/main/java/de/daver/beyondplan/client/web/WebClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/BeyondPlan-Client/src/main/java/de/daver/beyondplan/client/web/WebClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BeyondPlan-Client/src/test/java/de/daver/beyondplan/client/web/WebClientTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/BeyondPlan-Client/src/test/java/de/daver/beyondplan/client/web/WebClientTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BeyondPlan-Client/src/test/java/de/daver/beyondplan/test/client/WebClientTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BeyondPlan-Core/src/main/java/de/daver/beyondplan/core/web/WebServerSocket.java" beforeDir="false" afterPath="$PROJECT_DIR$/BeyondPlan-Core/src/main/java/de/daver/beyondplan/core/web/WebServerSocket.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BeyondPlan-Core/src/test/java/de/daver/beyondplan/core/web/WebServerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/BeyondPlan-Core/src/test/java/de/daver/beyondplan/core/web/WebServerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/MultiHashMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/MultiMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/ObjectTransformer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/StringUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/StringUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/json/JsonObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/json/JsonObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/json/JsonParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/json/JsonParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/sql/Result.java" beforeDir="false" afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/sql/Result.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/sql/SQLType.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/sql/statement/builder/CreateStatementBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/sql/statement/builder/CreateStatementBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/sql/statement/builder/DeleteStatementBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/sql/statement/builder/DeleteStatementBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/sql/statement/builder/DropStatementBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/sql/statement/builder/DropStatementBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/sql/statement/builder/InsertIntoStatementBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/sql/statement/builder/InsertIntoStatementBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/sql/statement/builder/SelectStatementBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/sql/statement/builder/SelectStatementBuilder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/sql/statement/builder/StatementBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/sql/statement/builder/StatementBuilder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/sql/statement/builder/UpdateStatementBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/sql/statement/builder/UpdateStatementBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/sql/statement/node/ColumnsNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/sql/statement/node/ColumnsNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/sql/statement/node/IfNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/sql/statement/node/IfNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BeyondPlan-Utils/src/test/java/de/daver/beyondplan/util/StringUtilsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/test/java/de/daver/beyondplan/util/StringUtilsTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BeyondPlan-Utils/src/test/java/de/daver/beyondplan/util/json/JsonParserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/test/java/de/daver/beyondplan/util/json/JsonParserTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BeyondPlan-Utils/src/test/java/de/daver/beyondplan/util/sql/DatabaseTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/test/java/de/daver/beyondplan/util/sql/DatabaseTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BeyondPlan-Utils/src/test/java/de/daver/beyondplan/util/sql/statement/StatementBuilderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/test/java/de/daver/beyondplan/util/sql/statement/StatementBuilderTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/de/daver/beyondplan/test/ServerClientTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/de/daver/beyondplan/test/ServerClientTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,10 +90,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JUnit5 Test Class" />
-        <option value="Class" />
         <option value="Record" />
         <option value="Interface" />
+        <option value="JUnit5 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -133,46 +123,50 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.TestJsonParsing.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.All Tests.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.BeyondPlan-Java (Tests).executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.BeyondPlan-Java [BeyondPlan-Client:test].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.BeyondPlan-Java:BeyondPlan-Core [:BeyondPlan-Core:TestJsonParsing.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.BeyondPlan-Java:BeyondPlan-Utils [:BeyondPlan-Utils:JsonParsingTest.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Build BeyondPlan-Java.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Client-Module-Tests.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Core-Module-Tests.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.DatabaseTest (1).executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.DatabaseTest.createTable.executor&quot;: &quot;Debug&quot;,
-    &quot;Gradle.DatabaseTest.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.ServerClientTest.oneServerOneClientHttpRequest.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.StringUtilsTest.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Utils-Module-Tests.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_directory_selection&quot;: &quot;D:/BeyondPlan-Projekt/BeyondPlan-Java/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/sql/statement/node&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.TestJsonParsing.executor": "Run",
+    "Gradle.All Tests.executor": "Run",
+    "Gradle.BeyondPlan-Java (Tests).executor": "Run",
+    "Gradle.BeyondPlan-Java [BeyondPlan-Client:test].executor": "Run",
+    "Gradle.BeyondPlan-Java:BeyondPlan-Core [:BeyondPlan-Core:TestJsonParsing.main()].executor": "Run",
+    "Gradle.BeyondPlan-Java:BeyondPlan-Utils [:BeyondPlan-Utils:JSONFormat.main()].executor": "Run",
+    "Gradle.BeyondPlan-Java:BeyondPlan-Utils [:BeyondPlan-Utils:JsonParsingTest.main()].executor": "Run",
+    "Gradle.Build BeyondPlan-Java.executor": "Run",
+    "Gradle.CacheTest.executor": "Run",
+    "Gradle.Client-Module-Tests.executor": "Run",
+    "Gradle.Core-Module-Tests.executor": "Run",
+    "Gradle.DatabaseTest (1).executor": "Run",
+    "Gradle.DatabaseTest.createTable.executor": "Debug",
+    "Gradle.DatabaseTest.executor": "Run",
+    "Gradle.JSONFormatTest.executor": "Run",
+    "Gradle.JsonParserTest.arrayOfObjects.executor": "Run",
+    "Gradle.ServerClientTest.oneServerOneClientHttpRequest.executor": "Run",
+    "Gradle.StringUtilsTest.executor": "Run",
+    "Gradle.Utils-Module-Tests.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_directory_selection": "D:/BeyondPlan-Projekt/BeyondPlan-Java/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/sql/statement/node",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "SDKs",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;sqlite&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "sqlite"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -181,20 +175,34 @@
       <recent name="de.daver.beyondplan.util.sql.statement.CreateStatementBuilder" />
     </key>
     <key name="MoveInnerDialog.RECENTS_KEY">
+      <recent name="de.daver.beyondplan.util.config.format" />
+      <recent name="de.daver.beyondplan.util.config" />
       <recent name="de.daver.beyondplan.util.sql.statement.node" />
       <recent name="" />
       <recent name="de.daver.beyondplan.util.sql.statement" />
-      <recent name="de.daver.beyondplan.core.json" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="de.daver.beyondplan.util.config.format" />
+      <recent name="de.daver.beyondplan.util.config" />
+      <recent name="de.daver.beyondplan.util.file" />
       <recent name="de.daver.beyondplan.util.sql.statement" />
       <recent name="de.daver.beyondplan.client.web" />
-      <recent name="de.daver.beyondplan.core.web" />
-      <recent name="de.daver.beyondplan.util.json" />
-      <recent name="de.daver.beyondplan.util.sql" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.All Tests">
+  <component name="RunManager" selected="Application.JSONFormat">
+    <configuration name="JSONFormat" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="de.daver.beyondplan.util.config.format.JSONFormat" />
+      <module name="BeyondPlan.BeyondPlan-Utils.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="de.daver.beyondplan.util.config.format.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="All Tests" type="GradleRunConfiguration" factoryName="Gradle">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -215,6 +223,30 @@
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
       <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="CacheTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":BeyondPlan-Utils:test" />
+            <option value="--tests" />
+            <option value="&quot;de.daver.beyondplan.util.config.CacheTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
     <configuration name="Client-Module-Tests" type="GradleRunConfiguration" factoryName="Gradle">
@@ -261,6 +293,54 @@
       <RunAsTest>false</RunAsTest>
       <method v="2" />
     </configuration>
+    <configuration name="JSONFormatTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":BeyondPlan-Utils:test" />
+            <option value="--tests" />
+            <option value="&quot;de.daver.beyondplan.util.config.format.JSONFormatTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="JsonParserTest.arrayOfObjects" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":BeyondPlan-Utils:test" />
+            <option value="--tests" />
+            <option value="&quot;de.daver.beyondplan.util.json.JsonParserTest.arrayOfObjects&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
     <configuration name="Utils-Module-Tests" type="GradleRunConfiguration" factoryName="Gradle">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -284,11 +364,23 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Application.JSONFormat" />
       <item itemvalue="Gradle.Client-Module-Tests" />
       <item itemvalue="Gradle.Core-Module-Tests" />
       <item itemvalue="Gradle.All Tests" />
       <item itemvalue="Gradle.Utils-Module-Tests" />
+      <item itemvalue="Gradle.CacheTest" />
+      <item itemvalue="Gradle.JSONFormatTest" />
+      <item itemvalue="Gradle.JsonParserTest.arrayOfObjects" />
     </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.JSONFormat" />
+        <item itemvalue="Gradle.JSONFormatTest" />
+        <item itemvalue="Gradle.CacheTest" />
+        <item itemvalue="Gradle.JsonParserTest.arrayOfObjects" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -308,7 +400,10 @@
       <updated>1712305594653</updated>
       <workItem from="1712305595934" duration="11549000" />
       <workItem from="1712323382748" duration="22059000" />
-      <workItem from="1712393293792" duration="8502000" />
+      <workItem from="1712393293792" duration="17576000" />
+      <workItem from="1712517658501" duration="1270000" />
+      <workItem from="1712524288169" duration="2061000" />
+      <workItem from="1712570903866" duration="35360000" />
     </task>
     <task id="LOCAL-00001" summary="Working Simple first version of JsonParser">
       <option name="closed" value="true" />
@@ -390,7 +485,23 @@
       <option name="project" value="LOCAL" />
       <updated>1712343104148</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="StatementBuilderTest all test running implemented KeyWordBuilders">
+      <option name="closed" value="true" />
+      <created>1712403322378</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1712403322378</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Reorganized Nodes to Builder classes">
+      <option name="closed" value="true" />
+      <created>1712404462811</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1712404462811</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -407,6 +518,8 @@
     <MESSAGE value="Finished Set upping JUnit Tests, next step fix all failing tests" />
     <MESSAGE value="Configured build.gradle's&#10;Onley JsonParser Test are failing" />
     <MESSAGE value="Create Table creatable with Builder" />
-    <option name="LAST_COMMIT_MESSAGE" value="Create Table creatable with Builder" />
+    <MESSAGE value="StatementBuilderTest all test running implemented KeyWordBuilders" />
+    <MESSAGE value="Reorganized Nodes to Builder classes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Reorganized Nodes to Builder classes" />
   </component>
 </project>

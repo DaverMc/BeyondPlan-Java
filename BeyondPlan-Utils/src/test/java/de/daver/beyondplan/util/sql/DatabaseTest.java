@@ -1,16 +1,12 @@
 package de.daver.beyondplan.util.sql;
 
-import de.daver.beyondplan.util.ObjectTransformer;
+import de.daver.beyondplan.util.file.FileUtils;
 import de.daver.beyondplan.util.sql.driver.SQLiteDriver;
-import de.daver.beyondplan.util.sql.statement.node.Column;
-import de.daver.beyondplan.util.sql.statement.node.ColumnType;
 import de.daver.beyondplan.util.sql.statement.Statement;
-import de.daver.beyondplan.util.sql.statement.builder.CreateStatementBuilder;
-import de.daver.beyondplan.util.sql.statement.builder.StatementBuilder;
-import de.daver.beyondplan.util.sql.statement.node.Condition;
 import org.junit.jupiter.api.*;
 
 import java.io.File;
+import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -20,25 +16,27 @@ import static org.junit.jupiter.api.Assertions.*;
 class DatabaseTest {
 
     //region SQL-Statements
-    Statement CREATE_TABLE = new Statement("CREATE TABLE IF NOT EXISTS mitarbeiter (\n" +
-            "    id INT PRIMARY KEY,\n" +
-            "    name VARCHAR(100),\n" +
-            "    abteilung VARCHAR(50),\n" +
-            "    eintrittsdatum DATE\n" +
-            ");");
-    Statement INSERT_INTO = new Statement("INSERT INTO mitarbeiter (id, name, abteilung, eintrittsdatum) VALUES\n" +
-            "(1, 'Max Mustermann', 'IT', '2021-01-10'),\n" +
-            "(2, 'Erika Mustermann', 'HR', '2021-02-15'),\n" +
-            "(3, 'John Doe', 'Marketing', '2021-03-01');");
+    Statement CREATE_TABLE = new Statement("""
+            CREATE TABLE IF NOT EXISTS mitarbeiter (
+                id INT PRIMARY KEY,
+                name VARCHAR(100),
+                abteilung VARCHAR(50),
+                eintrittsdatum DATE
+            );""");
+    Statement INSERT_INTO = new Statement("""
+            INSERT INTO mitarbeiter (id, name, abteilung, eintrittsdatum) VALUES
+            (1, 'Max Mustermann', 'IT', '2021-01-10'),
+            (2, 'Erika Mustermann', 'HR', '2021-02-15'),
+            (3, 'John Doe', 'Marketing', '2021-03-01');""");
 
-    Statement UPDATE = new Statement("UPDATE mitarbeiter\n" +
-            "SET abteilung = 'Finanzen'\n" +
-            "WHERE id = 2;");
+    Statement UPDATE = new Statement("""
+            UPDATE mitarbeiter
+            SET abteilung = 'Finanzen'
+            WHERE id = 2;""");
 
-    Statement DELETE_FROM =  new Statement("DELETE FROM mitarbeiter\n" +
-            "WHERE id = 3;");
+    Statement DELETE_FROM =  new Statement("DELETE FROM mitarbeiter WHERE id = 3;");
 
-    Statement SELECT_ALL = new Statement("SELECT * FROM mitarbeiter;\n");
+    Statement SELECT_ALL = new Statement("SELECT * FROM mitarbeiter;");
 
     Statement SELECT_COUNT = new Statement("SELECT COUNT(*) AS AnzahlMitarbeiter FROM mitarbeiter;");
 
@@ -73,15 +71,7 @@ class DatabaseTest {
     @Test
     @Order(2)
     void createTable() {
-        Statement statement = StatementBuilder.create(CreateStatementBuilder.Creatable.TABLE)
-                .IF(Condition.NOT_EXISTS)
-                .name("mitarbeiter")
-                .columns(new Column("id", ColumnType.INT, true),
-                        new Column("name", ColumnType.varchar(100)),
-                        new Column("abteilung", ColumnType.varchar(50)),
-                        new Column("eintrittsdatum", ColumnType.DATE))
-                .build();
-        assertDoesNotThrow(() -> database.post(statement));
+        assertDoesNotThrow(() -> database.post(CREATE_TABLE));
     }
 
     @Test
@@ -106,7 +96,7 @@ class DatabaseTest {
     @Order(6)
     void selectAll() {
         Result result = assertDoesNotThrow(() -> database.request(SELECT_ALL));
-        var list = result.getColumn("name", ObjectTransformer.STRING);
+        var list = result.getColumn("name", String.class::cast);
         assertFalse(list.isEmpty());
         assertEquals(2, list.size());
     }
@@ -116,7 +106,7 @@ class DatabaseTest {
     void selectCountAsync() {
         var resultFuture = assertDoesNotThrow(() -> database.requestAsync(SELECT_COUNT));
         var result = assertDoesNotThrow(() -> resultFuture.get(1, TimeUnit.SECONDS));
-        var count = result.get("AnzahlMitarbeiter", ObjectTransformer.INT);
+        var count = result.get("AnzahlMitarbeiter", String.class::cast);
         assertEquals(2, count);
     }
 
@@ -124,7 +114,7 @@ class DatabaseTest {
     @Order(8)
     void selectMax() {
         Result result = assertDoesNotThrow(() -> database.request(SELECT_MAX));
-        var date = result.get("LetzterEintritt", ObjectTransformer.STRING);
+        var date = result.get("LetzterEintritt", Date.class::cast);
         assertEquals("2021-02-15", date);
     }
 
@@ -150,6 +140,11 @@ class DatabaseTest {
     @Order(12)
     void closeConnection() {
         assertDoesNotThrow(() -> database.disconnect());
+    }
+
+    @AfterAll
+    static void deleteDatabase() {
+        assertDoesNotThrow(() -> FileUtils.deleteFile("test.db"));
     }
 
 }
