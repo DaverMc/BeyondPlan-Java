@@ -41,7 +41,10 @@ public class JSONFormat implements ConfigFormat {
                   "escapedCharacters": "\\"Hello\\", he said."
                 }
                 """;
-        JSONFormat.JSON.parse(json);
+        var cache = JSONFormat.JSON.parse(json);
+        System.out.println("----SERIALIZED----");
+        System.out.println();
+        System.out.println(JSONFormat.JSON.serialize(cache));
     }
 
     @Override
@@ -56,24 +59,22 @@ public class JSONFormat implements ConfigFormat {
 
             if(open) {
                 String part = json.substring(lastIndex + 1, index);
+                System.out.println("P: " + part);
                 parts.add(part);
-                //System.out.println("PART: " + part);
             } else {
                 String control = json.substring(lastIndex + 1, index).replaceAll("\\s+", "");
-                //System.out.println("LAST: " + lastIndex + " INDEX: " + index);
                 controls.add(control);
-                //System.out.println("CONTROL: " + control);
             }
             open = !open;
             lastIndex = index;
         }
 
         AtomicInteger partIndex = new AtomicInteger(0);
-        return parseCache(partIndex, parts, controls);
+        AtomicInteger controlIndex = new AtomicInteger(1);
+        return parseCache(controlIndex, partIndex, parts, controls);
 }
 
     private String control(String control) {
-        System.out.println(control);
         if(control.isBlank() || control.equals(",")) return null;
 
         if(control.startsWith(":")) {
@@ -85,23 +86,25 @@ public class JSONFormat implements ConfigFormat {
         return control;
     }
 
-    private Object getValue(String control, AtomicInteger controlIndex, AtomicInteger partIndex, List<String> parts, List<String> controls) {
+    record SyntaxNode(char syntax, Object value) {}
+
+    private SyntaxNode getValue(String control, AtomicInteger controlIndex, AtomicInteger partIndex, List<String> parts, List<String> controls) {
         StringUtils.IndexedCharacter first = StringUtils.findFirstAppearence(control, JsonSyntax.ARRAY_START, JsonSyntax.OBJECT_START, JsonSyntax.OBJECT_END);
-        if(first== null) {
-            Object value;
+        if(first == null) {
+            String value;
             if (control.isBlank()) {
                 value = parts.get(partIndex.getAndIncrement());
             } else value = control;
 
-
-            return value;
+            return new SyntaxNode(' ', value);
         } else if(first.c() == JsonSyntax.ARRAY_START) {
             controls.set(controlIndex.get(), control.substring(first.index() + 1));
-            return parseList(partIndex, parts, controls);
+            CacheList list = parseList(controlIndex, partIndex, parts, controls);
+            return new SyntaxNode(JsonSyntax.ARRAY_START, list);
         } else if(first.c() == JsonSyntax.OBJECT_START) {
             controls.set(controlIndex.get(), control.substring(first.index() + 1));
-            return parseCache(partIndex, parts, controls);
-        } else if(first.c() == JsonSyntax.OBJECT_END) {
+            return new SyntaxNode(JsonSyntax.OBJECT_START, parseCache(controlIndex, partIndex, parts, controls));
+        } else if(first.c() == JsonSyntax.OBJECT_END || first.c() == JsonSyntax.ARRAY_END) {
             String value = control.substring(0, first.index());
 
             if (first.index() + 1 < controls.size()) {
@@ -111,89 +114,50 @@ public class JSONFormat implements ConfigFormat {
 
             }
             controls.set(controlIndex.get(), control);
-            return value;
+            return new SyntaxNode(first.c(), value);
         }
-
+        return null;
     }
 
-    private Cache parseCache(AtomicInteger partIndex, List<String> parts, List<String> controls) {
+    private Cache parseCache(AtomicInteger controlIndex, AtomicInteger partIndex, List<String> parts, List<String> controls) {
         Cache cache = new Cache();
-        for(int i = partIndex.get(); i < controls.size(); i++){
+        System.out.println("OBJ BEG:");
+        for(int i = controlIndex.get(); i < controls.size(); i++) {
+            controlIndex.set(i);
             String control = control(controls.get(i));
-            if(control == null) continue;
-            //System.out.println("R2: " + control);
+            //System.out.println("CONTROL OBJ: " + control);
+            if (control == null) continue;
+
             String key = parts.get(partIndex.getAndIncrement());
-            StringUtils.IndexedCharacter first = StringUtils.findFirstAppearence(control, JsonSyntax.ARRAY_START, JsonSyntax.OBJECT_START, JsonSyntax.OBJECT_END);
-            if(first== null) {
-                String value;
-                if(control.isBlank()) {
-                    value = parts.get(partIndex.getAndIncrement());
-                }
-                else value = control;
+            SyntaxNode node = getValue(control, controlIndex, partIndex, parts, controls);
+            cache.set(key, node.value);
+            i = controlIndex.get();
+            System.out.println("KEY: " + key + " VALUE: " + node + " P_INDEX: " + partIndex.get() + " C_INDEX: " + controlIndex.get());
 
-                System.out.println("K: " + key + " V: " + value + " I: " +  partIndex.get());
-                cache.set(key, value);
-            } else if(first.c() == JsonSyntax.ARRAY_START) {
-                controls.set(i, control.substring(first.index() + 1));
-                System.out.println("KEY: " + key + " : ARRAY" + " I: " +  partIndex.get());
-                cache.set(key, parseList(partIndex, parts, controls));
-            } else if(first.c() == JsonSyntax.OBJECT_START) {
-                controls.set(i, control.substring(first.index() + 1));
-                System.out.println("KEY: " + key + " : OBJECT" + " I: " +  partIndex.get());
-                cache.set(key, parseCache(partIndex, parts, controls));
-                System.out.println("AI: " + partIndex.getAndIncrement());
-            } else if(first.c() == JsonSyntax.OBJECT_END) {
-                String value = control.substring(0, first.index());
-                cache.set(key, value);
-
-                if(first.index() + 1 < controls.size())  {
-                    control = control.substring(first.index() + 1);
-                } else {
-                    control = "";
-
-                }
-                controls.set(i, control);
-                System.out.println("K: " + key + " V: " + value + " OBJ END I: " +  partIndex.get());
+            if(node.syntax == JsonSyntax.OBJECT_END) {
+                System.out.println("OBJ END:");
                 return cache;
             }
         }
         return cache;
     }
 
-    private CacheList parseList(AtomicInteger partIndex, List<String> parts, List<String> controls) {
+    private CacheList parseList(AtomicInteger controlIndex, AtomicInteger partIndex, List<String> parts, List<String> controls) {
         CacheList cache = new CacheList();
-        for(int i = partIndex.get(); i < controls.size(); i++){
+        System.out.println("ARR BEG:");
+        for (int i = controlIndex.get(); i < controls.size(); i++) {
+            controlIndex.set(i);
             String control = control(controls.get(i));
-            if(control == null) continue;
+            //System.out.println("CONTROL ARR: " + control);
+            if (control == null) continue;
 
-            StringUtils.IndexedCharacter first = StringUtils.findFirstAppearence(control, JsonSyntax.ARRAY_START, JsonSyntax.OBJECT_START, JsonSyntax.ARRAY_END);
-            if(first== null) {
-                String value;
-                if(control.isBlank()) value = parts.get(partIndex.getAndIncrement());
-                else value = control;
+            SyntaxNode node = getValue(control, controlIndex, partIndex, parts, controls);
+            cache.add(node.value);
+            i = controlIndex.get();
+            System.out.println("VALUE: " + node + " P_INDEX: " + partIndex.get() + " C_INDEX: " + controlIndex.get());
 
-                System.out.println( " V: " + value + " I: " +  partIndex.get());
-                cache.add(value);
-            } else if(first.c() == JsonSyntax.ARRAY_START) {
-                controls.set(i, control.substring(first.index() + 1));
-                System.out.println(" : ARRAY" + " I: " +  partIndex.get());
-                cache.add(parseList(partIndex, parts, controls));
-            } else if(first.c() == JsonSyntax.OBJECT_START) {
-                controls.set(i, control.substring(first.index() + 1));
-                System.out.println(" : OBJECT" + " I: " +  partIndex.get());
-                cache.add(parseCache(partIndex, parts, controls));
-            } else if(first.c() == JsonSyntax.ARRAY_END) {
-                if(first.index() == 0) return cache;
-                String value = control.substring(0, first.index());
-                cache.add(value);
-
-                if(first.index() + 1 < controls.size())  {
-                    control = control.substring(first.index() + 1);
-                } else {
-                    control = "";
-                }
-                controls.set(i, control);
-                System.out.println(" V: " + value + " OBJ END I: " +  partIndex.get());
+            if (node.syntax == JsonSyntax.ARRAY_END) {
+                System.out.println("ARR END:");
                 return cache;
             }
         }

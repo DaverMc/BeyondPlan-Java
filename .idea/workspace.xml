@@ -4,42 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8c90a7ab-3649-459d-9c87-5f346bf4dd79" name="Changes" comment="Reorganized Nodes to Builder classes">
-      <change afterPath="$PROJECT_DIR$/BeyondPlan-Client/src/main/java/de/daver/beyondplan/client/Client.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/Parser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/Serializer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/config/Cache.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/config/CacheList.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/config/ConfigFormat.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/config/ListGetter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/config/ValueGetter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/config/format/JSONFormat.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/config/format/JsonSyntax.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/file/FileUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/test/java/de/daver/beyondplan/util/config/CacheTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/test/java/de/daver/beyondplan/util/config/format/JSONFormatTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/test/java/de/daver/beyondplan/util/file/FileUtilsTest.java" afterDir="false" />
+    <list default="true" id="8c90a7ab-3649-459d-9c87-5f346bf4dd79" name="Changes" comment="New Try">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BeyondPlan-Client/src/main/java/de/daver/beyondplan/client/web/WebClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/BeyondPlan-Client/src/main/java/de/daver/beyondplan/client/web/WebClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BeyondPlan-Client/src/test/java/de/daver/beyondplan/client/web/WebClientTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/BeyondPlan-Client/src/test/java/de/daver/beyondplan/client/web/WebClientTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BeyondPlan-Client/src/test/java/de/daver/beyondplan/test/client/WebClientTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/BeyondPlan-Core/src/main/java/de/daver/beyondplan/core/web/WebServerSocket.java" beforeDir="false" afterPath="$PROJECT_DIR$/BeyondPlan-Core/src/main/java/de/daver/beyondplan/core/web/WebServerSocket.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BeyondPlan-Core/src/test/java/de/daver/beyondplan/core/web/WebServerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/BeyondPlan-Core/src/test/java/de/daver/beyondplan/core/web/WebServerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/MultiHashMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/MultiMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/ObjectTransformer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/StringUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/StringUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/json/JsonObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/json/JsonObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/json/JsonParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/json/JsonParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/sql/Result.java" beforeDir="false" afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/sql/Result.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/sql/SQLType.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/sql/statement/builder/CreateStatementBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/sql/statement/builder/CreateStatementBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/sql/statement/builder/StatementBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/sql/statement/builder/StatementBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/sql/statement/builder/UpdateStatementBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/sql/statement/builder/UpdateStatementBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BeyondPlan-Utils/src/test/java/de/daver/beyondplan/util/StringUtilsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/test/java/de/daver/beyondplan/util/StringUtilsTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BeyondPlan-Utils/src/test/java/de/daver/beyondplan/util/json/JsonParserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/test/java/de/daver/beyondplan/util/json/JsonParserTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BeyondPlan-Utils/src/test/java/de/daver/beyondplan/util/sql/DatabaseTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/test/java/de/daver/beyondplan/util/sql/DatabaseTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BeyondPlan-Utils/src/test/java/de/daver/beyondplan/util/sql/statement/StatementBuilderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/test/java/de/daver/beyondplan/util/sql/statement/StatementBuilderTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/de/daver/beyondplan/test/ServerClientTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/de/daver/beyondplan/test/ServerClientTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/config/format/JSONFormat.java" beforeDir="false" afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/config/format/JSONFormat.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -403,7 +370,7 @@
       <workItem from="1712393293792" duration="17576000" />
       <workItem from="1712517658501" duration="1270000" />
       <workItem from="1712524288169" duration="2061000" />
-      <workItem from="1712570903866" duration="35360000" />
+      <workItem from="1712570903866" duration="38541000" />
     </task>
     <task id="LOCAL-00001" summary="Working Simple first version of JsonParser">
       <option name="closed" value="true" />
@@ -501,7 +468,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712404462811</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="New Try">
+      <option name="closed" value="true" />
+      <created>1712613049215</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1712613049215</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -520,6 +495,7 @@
     <MESSAGE value="Create Table creatable with Builder" />
     <MESSAGE value="StatementBuilderTest all test running implemented KeyWordBuilders" />
     <MESSAGE value="Reorganized Nodes to Builder classes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Reorganized Nodes to Builder classes" />
+    <MESSAGE value="New Try" />
+    <option name="LAST_COMMIT_MESSAGE" value="New Try" />
   </component>
 </project>
