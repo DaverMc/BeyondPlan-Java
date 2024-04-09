@@ -1,7 +1,12 @@
 package de.daver.beyondplan.util;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Future;
 
 public interface StringUtils {
 
@@ -36,5 +41,24 @@ public interface StringUtils {
     }
 
     record IndexedCharacter(int index, char c) {}
+
+    static boolean isBoolean(String str) {
+        return "true".equalsIgnoreCase(str) || "false".equalsIgnoreCase(str);
+    }
+
+    record ReturnValue<V>(V value, boolean success) {}
+
+    static ReturnValue<Boolean> parseBoolean(String str) {
+        if(!isBoolean(str)) return new ReturnValue<>(null, false);
+        return new ReturnValue<>(Boolean.parseBoolean(str), true);
+    }
+
+    static ReturnValue<BigDecimal> parseNumber(String str) {
+        try {
+            return new ReturnValue<>(new BigDecimal(str), true);
+        } catch (NumberFormatException e) {
+            return new ReturnValue<>(null, false);
+        }
+    }
 
 }

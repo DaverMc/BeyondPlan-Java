@@ -22,7 +22,7 @@ class JSONFormatTest {
                   "lastName": "Doe",
                   "age": 28
                 }""";
-        String actual = JSONFormat.JSON.serialize(cache);
+        String actual = ConfigFormat.JSON.serialize(cache);
         assertEquals(expected, actual);
     }
 
@@ -43,7 +43,7 @@ class JSONFormatTest {
                     "Cycling"
                   ]
                 }""";
-        String actual = JSONFormat.JSON.serialize(cache);
+        String actual = ConfigFormat.JSON.serialize(cache);
         assertEquals(expected, actual);
     }
 
@@ -64,7 +64,7 @@ class JSONFormatTest {
                     "country": "USA"
                   }
                 }""";
-        String actual = JSONFormat.JSON.serialize(person);
+        String actual = ConfigFormat.JSON.serialize(person);
         assertEquals(expected, actual);
     }
 
@@ -83,10 +83,9 @@ class JSONFormatTest {
                   "verified": true,
                   "balance": 1000.55
                 }""";
-        String actual = JSONFormat.JSON.serialize(cache);
+        String actual = ConfigFormat.JSON.serialize(cache);
         assertEquals(expected, actual);
     }
-
 
     @Test
     public void testSerializeComplexJsonObject() {
@@ -164,7 +163,77 @@ class JSONFormatTest {
                   "escapedCharacters": "\\"Hello\\", he said."
                 }
                 """;
-        String actualJson = JSONFormat.JSON.serialize(cache);
+        String actualJson = ConfigFormat.JSON.serialize(cache);
         assertEquals(expectedJson, actualJson);
+    }
+
+    @Test
+    public void testParseSimpleJsonObject() {
+        String json = """
+                {
+                  "firstName": "Jane",
+                  "lastName": "Doe",
+                  "age": 28
+                }""";
+        Cache cache = ConfigFormat.JSON.parse(json);
+
+        assertEquals("Jane", cache.get("firstName").string());
+        assertEquals("Doe", cache.get("lastName").string());
+        assertEquals(28, cache.get("age").bigDecimal().intValue());
+    }
+
+    @Test
+    public void testParseJsonObjectWithList() {
+        String json = """
+                {
+                  "name": "John",
+                  "hobbies": [
+                    "Reading",
+                    "Cycling"
+                  ]
+                }""";
+        Cache cache = ConfigFormat.JSON.parse(json);
+
+        assertEquals("John", cache.get("name").string());
+        CacheList hobbies = cache.get("hobbies").cacheList();
+        assertNotNull(hobbies);
+        assertTrue(hobbies.contains("Reading"));
+        assertTrue(hobbies.contains("Cycling"));
+    }
+
+    @Test
+    public void testParseNestedJsonObject() {
+        String json = """
+                {
+                  "name": "Emily",
+                  "address": {
+                    "city": "New York",
+                    "country": "USA"
+                  }
+                }""";
+        Cache cache = ConfigFormat.JSON.parse(json);
+
+        assertEquals("Emily", cache.get("name").string());
+        Cache address = cache.get("address").cache();
+        assertNotNull(address);
+        assertEquals("New York", address.get("city").string());
+        assertEquals("USA", address.get("country").string());
+    }
+
+    @Test
+    public void testParseJsonObjectWithVariousTypes() {
+        String json = """
+                {
+                  "name": "Bob",
+                  "age": 24,
+                  "verified": true,
+                  "balance": 1000.55
+                }""";
+        Cache cache = ConfigFormat.JSON.parse(json);
+
+        assertEquals("Bob", cache.get("name").string());
+        assertEquals(24, cache.get("age").bigDecimal().intValue());
+        assertEquals(true, cache.get("verified").bool());
+        assertEquals(1000.55, cache.get("balance").bigDecimal().doubleValue(), 0.001);
     }
 }

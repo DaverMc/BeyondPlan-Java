@@ -25,12 +25,12 @@ class CacheTest {
         cache.set("gender", gender);
         cache.set("children", children);
 
-        assertEquals(name, cache.get("name").cast(String.class));
-        assertEquals(10, cache.get("age").cast(Integer.class));
-        assertEquals(gender, cache.get("gender").cast(String.class));
-        assertEquals(firstChild, cache.getList("children").get(0).cast(String.class));
-        assertEquals(secondChild, cache.getList("children").get(1).cast(String.class));
-        assertEquals(thirdChild, cache.getList("children").get(2).cast(String.class));
+        assertEquals(name, cache.get("name").string());
+        assertEquals(10, cache.get("age").bigDecimal().intValue());
+        assertEquals(gender, cache.get("gender").string());
+        assertEquals(firstChild, cache.getList("children").get(0).string());
+        assertEquals(secondChild, cache.getList("children").get(1).string());
+        assertEquals(thirdChild, cache.getList("children").get(2).string());
     }
 
 

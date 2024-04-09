@@ -6,7 +6,8 @@ import de.daver.beyondplan.util.sql.statement.Statement;
 import org.junit.jupiter.api.*;
 
 import java.io.File;
-import java.util.Date;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.concurrent.TimeUnit;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -106,7 +107,7 @@ class DatabaseTest {
     void selectCountAsync() {
         var resultFuture = assertDoesNotThrow(() -> database.requestAsync(SELECT_COUNT));
         var result = assertDoesNotThrow(() -> resultFuture.get(1, TimeUnit.SECONDS));
-        var count = result.get("AnzahlMitarbeiter", String.class::cast);
+        var count = result.get("AnzahlMitarbeiter", Integer.class::cast);
         assertEquals(2, count);
     }
 
@@ -114,7 +115,13 @@ class DatabaseTest {
     @Order(8)
     void selectMax() {
         Result result = assertDoesNotThrow(() -> database.request(SELECT_MAX));
-        var date = result.get("LetzterEintritt", Date.class::cast);
+        String date = result.get("LetzterEintritt", String.class::cast);
+
+        /*
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String dateString = sdf.format(date);
+        */
+
         assertEquals("2021-02-15", date);
     }
 

@@ -4,12 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8c90a7ab-3649-459d-9c87-5f346bf4dd79" name="Changes" comment="Kein Error mehr beim parsen aber richtig sieht es auch noch nicht ganz aus">
+    <list default="true" id="8c90a7ab-3649-459d-9c87-5f346bf4dd79" name="Changes" comment="Implemented new Tests for JSONFormat a problem is left with lists 3 of 5 test passed but the two with lists not">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/config/Cache.java" beforeDir="false" afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/config/Cache.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/StringUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/StringUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/config/CacheList.java" beforeDir="false" afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/config/CacheList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/config/ValueGetter.java" beforeDir="false" afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/config/ValueGetter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/config/format/JSONFormat.java" beforeDir="false" afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/config/format/JSONFormat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/json/JsonArray.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/json/JsonObject.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/json/JsonParser.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/BeyondPlan-Utils/src/test/java/de/daver/beyondplan/util/config/CacheTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/test/java/de/daver/beyondplan/util/config/CacheTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BeyondPlan-Utils/src/test/java/de/daver/beyondplan/util/config/format/JSONFormatTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/test/java/de/daver/beyondplan/util/config/format/JSONFormatTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BeyondPlan-Utils/src/test/java/de/daver/beyondplan/util/json/JsonParserTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BeyondPlan-Utils/src/test/java/de/daver/beyondplan/util/sql/DatabaseTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/test/java/de/daver/beyondplan/util/sql/DatabaseTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -374,7 +381,7 @@
       <workItem from="1712517658501" duration="1270000" />
       <workItem from="1712524288169" duration="2061000" />
       <workItem from="1712570903866" duration="38754000" />
-      <workItem from="1712647925387" duration="3177000" />
+      <workItem from="1712647925387" duration="8551000" />
     </task>
     <task id="LOCAL-00001" summary="Working Simple first version of JsonParser">
       <option name="closed" value="true" />
@@ -488,7 +495,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712616403752</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Implemented new Tests for JSONFormat a problem is left with lists 3 of 5 test passed but the two with lists not">
+      <option name="closed" value="true" />
+      <created>1712651347960</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1712651347960</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -509,6 +524,7 @@
     <MESSAGE value="Reorganized Nodes to Builder classes" />
     <MESSAGE value="New Try" />
     <MESSAGE value="Kein Error mehr beim parsen aber richtig sieht es auch noch nicht ganz aus" />
-    <option name="LAST_COMMIT_MESSAGE" value="Kein Error mehr beim parsen aber richtig sieht es auch noch nicht ganz aus" />
+    <MESSAGE value="Implemented new Tests for JSONFormat a problem is left with lists 3 of 5 test passed but the two with lists not" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented new Tests for JSONFormat a problem is left with lists 3 of 5 test passed but the two with lists not" />
   </component>
 </project>

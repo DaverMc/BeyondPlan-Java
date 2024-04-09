@@ -50,4 +50,8 @@ public class CacheList {
     public int size() {
         return cache.size();
     }
+
+    public boolean contains(Object o) {
+        return cache.contains(o);
+    }
 }
