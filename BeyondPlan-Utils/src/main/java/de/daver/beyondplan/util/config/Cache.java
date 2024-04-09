@@ -11,7 +11,7 @@ public class Cache {
     private final Map<String, Object> cache;
 
     public Cache() {
-        this(HashMap::new);
+        this(LinkedHashMap::new);
     }
 
     public Cache(Supplier<Map<String, Object>> cacheSupplier) {
@@ -45,14 +45,8 @@ public class Cache {
         return null;
     }
 
-    public void set(String key, Object...values) {
-        set(key, Arrays.asList(values));
-    }
-
-    public void set(String key, Collection<Object> collection) {
-        CacheList list = new CacheList();
-        list.addAll(collection);
-        cache.put(key, list);
+    public void set(String key, Object value) {
+        cache.put(key, value);
     }
 
     public String toString(ConfigFormat format) {

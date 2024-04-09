@@ -15,12 +15,15 @@ class CacheTest {
         String firstChild = "Marie";
         String secondChild = "Jane";
         String thirdChild = "John";
-
+        CacheList children = new CacheList();
+        children.add(firstChild);
+        children.add(secondChild);
+        children.add(thirdChild);
 
         cache.set("name", name);
         cache.set("age", age);
         cache.set("gender", gender);
-        cache.set("children", firstChild, secondChild, thirdChild);
+        cache.set("children", children);
 
         assertEquals(name, cache.get("name").cast(String.class));
         assertEquals(10, cache.get("age").cast(Integer.class));

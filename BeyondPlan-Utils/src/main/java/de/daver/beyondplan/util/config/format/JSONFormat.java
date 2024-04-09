@@ -59,7 +59,6 @@ public class JSONFormat implements ConfigFormat {
 
             if(open) {
                 String part = json.substring(lastIndex + 1, index);
-                System.out.println("P: " + part);
                 parts.add(part);
             } else {
                 String control = json.substring(lastIndex + 1, index).replaceAll("\\s+", "");
@@ -73,6 +72,11 @@ public class JSONFormat implements ConfigFormat {
         AtomicInteger controlIndex = new AtomicInteger(1);
         return parseCache(controlIndex, partIndex, parts, controls);
 }
+
+    @Override
+    public CacheList parseList(String string) {
+        return null;
+    }
 
     private String control(String control) {
         if(control.isBlank() || control.equals(",")) return null;
@@ -89,7 +93,7 @@ public class JSONFormat implements ConfigFormat {
     record SyntaxNode(char syntax, Object value) {}
 
     private SyntaxNode getValue(String control, AtomicInteger controlIndex, AtomicInteger partIndex, List<String> parts, List<String> controls) {
-        StringUtils.IndexedCharacter first = StringUtils.findFirstAppearence(control, JsonSyntax.ARRAY_START, JsonSyntax.OBJECT_START, JsonSyntax.OBJECT_END);
+        StringUtils.IndexedCharacter first = StringUtils.findFirstAppearence(control, JsonSyntax.ARRAY_START, JsonSyntax.OBJECT_START, JsonSyntax.OBJECT_END, JsonSyntax.ARRAY_END);
         if(first == null) {
             String value;
             if (control.isBlank()) {
@@ -111,7 +115,6 @@ public class JSONFormat implements ConfigFormat {
                 control = control.substring(first.index() + 1);
             } else {
                 control = "";
-
             }
             controls.set(controlIndex.get(), control);
             return new SyntaxNode(first.c(), value);
@@ -132,7 +135,7 @@ public class JSONFormat implements ConfigFormat {
             SyntaxNode node = getValue(control, controlIndex, partIndex, parts, controls);
             cache.set(key, node.value);
             i = controlIndex.get();
-            System.out.println("KEY: " + key + " VALUE: " + node + " P_INDEX: " + partIndex.get() + " C_INDEX: " + controlIndex.get());
+            System.out.println("KEY: " + key + " VALUE: " + node.value + " P_INDEX: " + partIndex.get() + " C_INDEX: " + controlIndex.get());
 
             if(node.syntax == JsonSyntax.OBJECT_END) {
                 System.out.println("OBJ END:");
@@ -154,7 +157,7 @@ public class JSONFormat implements ConfigFormat {
             SyntaxNode node = getValue(control, controlIndex, partIndex, parts, controls);
             cache.add(node.value);
             i = controlIndex.get();
-            System.out.println("VALUE: " + node + " P_INDEX: " + partIndex.get() + " C_INDEX: " + controlIndex.get());
+            System.out.println("VALUE: " + node.value + " P_INDEX: " + partIndex.get() + " C_INDEX: " + controlIndex.get());
 
             if (node.syntax == JsonSyntax.ARRAY_END) {
                 System.out.println("ARR END:");
@@ -166,41 +169,52 @@ public class JSONFormat implements ConfigFormat {
 
     @Override
     public String serialize(Cache obj) {
-        StringBuilder json = new StringBuilder("{");
-        for(String key : obj.keys()) {
-            json.append("\"").append(key).append("\":").append(ofObject(obj.get(key))).append(",");
+        return serialize(obj, 1);
+    }
+
+    private String serialize(Cache obj, int depth) {
+        StringBuilder json = new StringBuilder("{\n");
+        boolean first = true;
+        for (String key : obj.keys()) {
+            if (!first) json.append(",\n");
+            json.append(indent(depth)).append("\"").append(key).append("\": ");
+            json.append(ofObject(obj.get(key), depth + 1));
+            first = false;
         }
-        if (json.length() > 1) {
-            json.deleteCharAt(json.length() - 1);
-        }
-        json.append("}");
+        json.append("\n").append(indent(depth - 1)).append("}");
         return json.toString();
     }
 
-    private String ofObject(ValueGetter objGetter) {
-        Object obj = objGetter.value();
-        if(obj == null) return "null";
-        if(obj instanceof Cache cache) return serialize(cache);
-        if(obj instanceof CacheList list) return serializeList(list);
-        return "\"" + obj.toString() + "\""; //TODO Schauen dass Ints und boolean anders behandelt werden
-    }
 
     @Override
     public String serializeList(CacheList cacheList) {
-        StringBuilder json = new StringBuilder("[");
-        for(int i = 0; i < cacheList.size(); i++) {
-            json.append(ofObject(cacheList.get(i))).append(",");
+        return serializeList(cacheList, 1);
+    }
+
+    private String serializeList(CacheList cacheList, int depth) {
+        StringBuilder json = new StringBuilder("[\n");
+        boolean first = true;
+        for (int i = 0; i < cacheList.size(); i++) {
+            if (!first) json.append(",\n");
+            json.append(indent(depth)).append(ofObject(cacheList.get(i), depth + 1));
+            first = false;
         }
-        if (json.length() > 1) {
-            json.deleteCharAt(json.length() - 1);
-        }
-        json.append("]");
+        json.append("\n").append(indent(depth - 1)).append("]");
         return json.toString();
     }
 
-    @Override
-    public CacheList parseList(String string) {
-        return null;
+    private String ofObject(ValueGetter objGetter, int depth) {
+        Object obj = objGetter.value();
+        if (obj == null) return "null";
+        if (obj instanceof Number || obj instanceof Boolean) return obj.toString();
+        if (obj instanceof String) return "\"" + obj.toString().replace("\"", "\\\"") + "\"";
+        if (obj instanceof Cache) return serialize((Cache) obj, depth);
+        if (obj instanceof CacheList) return serializeList((CacheList) obj, depth);
+        throw new IllegalArgumentException("Unsupported type: " + obj.getClass().getName());
+    }
+
+    private String indent(int depth) {
+        return "  ".repeat(depth); // Nutzt zwei Leerzeichen pro Einrückungsebene
     }
 
 }

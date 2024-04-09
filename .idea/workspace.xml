@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8c90a7ab-3649-459d-9c87-5f346bf4dd79" name="Changes" comment="New Try">
+    <list default="true" id="8c90a7ab-3649-459d-9c87-5f346bf4dd79" name="Changes" comment="Kein Error mehr beim parsen aber richtig sieht es auch noch nicht ganz aus">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/config/Cache.java" beforeDir="false" afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/config/Cache.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/config/format/JSONFormat.java" beforeDir="false" afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/config/format/JSONFormat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BeyondPlan-Utils/src/test/java/de/daver/beyondplan/util/config/CacheTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/test/java/de/daver/beyondplan/util/config/CacheTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BeyondPlan-Utils/src/test/java/de/daver/beyondplan/util/config/format/JSONFormatTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/BeyondPlan-Utils/src/test/java/de/daver/beyondplan/util/config/format/JSONFormatTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,50 +93,50 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.TestJsonParsing.executor": "Run",
-    "Gradle.All Tests.executor": "Run",
-    "Gradle.BeyondPlan-Java (Tests).executor": "Run",
-    "Gradle.BeyondPlan-Java [BeyondPlan-Client:test].executor": "Run",
-    "Gradle.BeyondPlan-Java:BeyondPlan-Core [:BeyondPlan-Core:TestJsonParsing.main()].executor": "Run",
-    "Gradle.BeyondPlan-Java:BeyondPlan-Utils [:BeyondPlan-Utils:JSONFormat.main()].executor": "Run",
-    "Gradle.BeyondPlan-Java:BeyondPlan-Utils [:BeyondPlan-Utils:JsonParsingTest.main()].executor": "Run",
-    "Gradle.Build BeyondPlan-Java.executor": "Run",
-    "Gradle.CacheTest.executor": "Run",
-    "Gradle.Client-Module-Tests.executor": "Run",
-    "Gradle.Core-Module-Tests.executor": "Run",
-    "Gradle.DatabaseTest (1).executor": "Run",
-    "Gradle.DatabaseTest.createTable.executor": "Debug",
-    "Gradle.DatabaseTest.executor": "Run",
-    "Gradle.JSONFormatTest.executor": "Run",
-    "Gradle.JsonParserTest.arrayOfObjects.executor": "Run",
-    "Gradle.ServerClientTest.oneServerOneClientHttpRequest.executor": "Run",
-    "Gradle.StringUtilsTest.executor": "Run",
-    "Gradle.Utils-Module-Tests.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "last_directory_selection": "D:/BeyondPlan-Projekt/BeyondPlan-Java/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/sql/statement/node",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "SDKs",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.TestJsonParsing.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.All Tests.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.BeyondPlan-Java (Tests).executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.BeyondPlan-Java [BeyondPlan-Client:test].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.BeyondPlan-Java:BeyondPlan-Core [:BeyondPlan-Core:TestJsonParsing.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.BeyondPlan-Java:BeyondPlan-Utils [:BeyondPlan-Utils:JSONFormat.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.BeyondPlan-Java:BeyondPlan-Utils [:BeyondPlan-Utils:JsonParsingTest.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Build BeyondPlan-Java.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.CacheTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Client-Module-Tests.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Core-Module-Tests.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.DatabaseTest (1).executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.DatabaseTest.createTable.executor&quot;: &quot;Debug&quot;,
+    &quot;Gradle.DatabaseTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.JSONFormatTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.JsonParserTest.arrayOfObjects.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ServerClientTest.oneServerOneClientHttpRequest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.StringUtilsTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Utils-Module-Tests.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_directory_selection&quot;: &quot;D:/BeyondPlan-Projekt/BeyondPlan-Java/BeyondPlan-Utils/src/main/java/de/daver/beyondplan/util/sql/statement/node&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "sqlite"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;sqlite&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -156,7 +159,7 @@
       <recent name="de.daver.beyondplan.client.web" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.JSONFormat">
+  <component name="RunManager" selected="Gradle.JSONFormatTest">
     <configuration name="JSONFormat" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="de.daver.beyondplan.util.config.format.JSONFormat" />
       <module name="BeyondPlan.BeyondPlan-Utils.main" />
@@ -342,8 +345,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.JSONFormat" />
         <item itemvalue="Gradle.JSONFormatTest" />
+        <item itemvalue="Application.JSONFormat" />
         <item itemvalue="Gradle.CacheTest" />
         <item itemvalue="Gradle.JsonParserTest.arrayOfObjects" />
       </list>
@@ -370,7 +373,8 @@
       <workItem from="1712393293792" duration="17576000" />
       <workItem from="1712517658501" duration="1270000" />
       <workItem from="1712524288169" duration="2061000" />
-      <workItem from="1712570903866" duration="38541000" />
+      <workItem from="1712570903866" duration="38754000" />
+      <workItem from="1712647925387" duration="3177000" />
     </task>
     <task id="LOCAL-00001" summary="Working Simple first version of JsonParser">
       <option name="closed" value="true" />
@@ -476,7 +480,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712613049215</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Kein Error mehr beim parsen aber richtig sieht es auch noch nicht ganz aus">
+      <option name="closed" value="true" />
+      <created>1712616403752</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1712616403752</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -496,6 +508,7 @@
     <MESSAGE value="StatementBuilderTest all test running implemented KeyWordBuilders" />
     <MESSAGE value="Reorganized Nodes to Builder classes" />
     <MESSAGE value="New Try" />
-    <option name="LAST_COMMIT_MESSAGE" value="New Try" />
+    <MESSAGE value="Kein Error mehr beim parsen aber richtig sieht es auch noch nicht ganz aus" />
+    <option name="LAST_COMMIT_MESSAGE" value="Kein Error mehr beim parsen aber richtig sieht es auch noch nicht ganz aus" />
   </component>
 </project>
